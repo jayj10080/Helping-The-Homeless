@@ -1,29 +1,86 @@
 @import "bootstrap";
 
-.your-mom {
-      animation: colorchange 50s; /* animation-name followed by duration in seconds*/
-         /* you could also use milliseconds (ms) or something like 2.5s */
-      -webkit-animation: colorchange 50s; /* Chrome and Safari */
+.center {
+      
+      margin: 0 auto;
+      
     }
 
-    @keyframes colorchange
-    {
-      0%   {color: red;}
-      25%  {color: yellow;}
-      50%  {color: blue;}
-      75%  {color: green;}
-      100% {color: red;}
+    .awesome {
+      
+      
+      width:100%;
+      
+      margin: 0 auto;
+      text-align: center;
+      
+      color:#313131;
+      
+      
+      position: absolute;
+      -webkit-animation:colorchange 20s infinite alternate;
+      
+      
     }
 
-    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
-    {
-      0%   {color: red;}
-      25%  {color: yellow;}
-      50%  {color: blue;}
-      75%  {color: green;}
-      100% {color: red;}
+    @-webkit-keyframes colorchange {
+      0% {
+        
+        color: blue;
+      }
+      
+      10% {
+        
+        color: #8e44ad;
+      }
+      
+      20% {
+        
+        color: #1abc9c;
+      }
+      
+      30% {
+        
+        color: #d35400;
+      }
+      
+      40% {
+        
+        color: blue;
+      }
+      
+      50% {
+        
+        color: #34495e;
+      }
+      
+      60% {
+        
+        color: blue;
+      }
+      
+      70% {
+        
+        color: #2980b9;
+      }
+      80% {
+     
+        color: #f1c40f;
+      }
+      
+      90% {
+     
+        color: #2980b9;
+      }
+      
+      100% {
+        
+        color: pink;
+      }
     }
 
-    .who {
+    .magoo {
+      margin-top: 50px;
       color: blue;
+      text-align: center;
     }

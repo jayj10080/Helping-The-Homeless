@@ -1,0 +1,29 @@
+@import "bootstrap";
+
+.your-mom {
+      animation: colorchange 50s; /* animation-name followed by duration in seconds*/
+         /* you could also use milliseconds (ms) or something like 2.5s */
+      -webkit-animation: colorchange 50s; /* Chrome and Safari */
+    }
+
+    @keyframes colorchange
+    {
+      0%   {color: red;}
+      25%  {color: yellow;}
+      50%  {color: blue;}
+      75%  {color: green;}
+      100% {color: red;}
+    }
+
+    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+    {
+      0%   {color: red;}
+      25%  {color: yellow;}
+      50%  {color: blue;}
+      75%  {color: green;}
+      100% {color: red;}
+    }
+
+    .who {
+      color: blue;
+    }

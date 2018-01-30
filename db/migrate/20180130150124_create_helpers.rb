@@ -3,8 +3,7 @@ class CreateHelpers < ActiveRecord::Migration[5.0]
     create_table :helpers do |t|
       t.string :name
       t.text :about
-      t.text :story
-      t.text :ineed
+      t.text :how
       t.integer :user_id
       t.timestamps
     end

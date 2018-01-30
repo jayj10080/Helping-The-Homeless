@@ -1,86 +1,25 @@
 @import "bootstrap";
 
-.center {
-      
-      margin: 0 auto;
-      
-    }
+.magoo {
+  margin-top: 50px;
+  color: blue;
+  text-align: center;
+}
 
-    .awesome {
-      
-      
-      width:100%;
-      
-      margin: 0 auto;
-      text-align: center;
-      
-      color:#313131;
-      
-      
-      position: absolute;
-      -webkit-animation:colorchange 20s infinite alternate;
-      
-      
-    }
+.booyah-box {
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  background: #fff;
+  /*border: 1px solid #ccc;*/
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+}
 
-    @-webkit-keyframes colorchange {
-      0% {
-        
-        color: blue;
-      }
-      
-      10% {
-        
-        color: #8e44ad;
-      }
-      
-      20% {
-        
-        color: #1abc9c;
-      }
-      
-      30% {
-        
-        color: #d35400;
-      }
-      
-      40% {
-        
-        color: blue;
-      }
-      
-      50% {
-        
-        color: #34495e;
-      }
-      
-      60% {
-        
-        color: blue;
-      }
-      
-      70% {
-        
-        color: #2980b9;
-      }
-      80% {
-     
-        color: #f1c40f;
-      }
-      
-      90% {
-     
-        color: #2980b9;
-      }
-      
-      100% {
-        
-        color: pink;
-      }
-    }
-
-    .magoo {
-      margin-top: 50px;
-      color: blue;
-      text-align: center;
-    }
+.header-divider {
+     border-left:1px solid #38546d; 
+     border-right:1px solid #16222c; 
+     height:80px;
+     position:absolute;
+     right:249px;
+     top:10px; 
+}

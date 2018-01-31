@@ -21,6 +21,12 @@ class HelpeesController < ApplicationController
     redirect_to helpee_path(@helpee)
   end
 
+  def destroy
+    @helpee = Helpee.find(params[:id])
+    @helpee.destroy
+    redirect_to root_path
+  end
+
   def create
     @helpee = current_user.helpees.create(helpee_params)
     redirect_to root_path

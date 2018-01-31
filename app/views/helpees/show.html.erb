@@ -35,3 +35,5 @@
   <br />
 
   <%= link_to 'Edit Profile', edit_helpee_path(@helpee), class: 'btn btn-primary' %>
+  <%= link_to 'Delete Profile', helpee_path(@helpee), method: :delete, data: 
+  {confirm: 'Are you sure you want to delete your profile?'},class: 'btn btn-danger' %> 

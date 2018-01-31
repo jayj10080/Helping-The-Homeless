@@ -21,6 +21,12 @@ class HelpersController < ApplicationController
     redirect_to helper_path(@helper)
   end
 
+  def destroy
+    @helper = Helper.find(params[:id])
+    @helper.destroy
+    redirect_to root_path
+  end
+
   def create
     @helper = current_user.helpers.create(helper_params)
     redirect_to root_path

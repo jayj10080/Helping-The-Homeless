@@ -4,11 +4,7 @@
 <h1><%= @helpee.need %></h1>
 <h1><%= @helpee.address %></h1>
 
-<style>
-    #map {
-      height: 300px;
-    }
-  </style>
+<% if @helpee.latitude.present? && @helpee.longitude.present? %>
  
   <script>
 
@@ -33,3 +29,7 @@
   </script>
 
   <div id="map"></div>
+
+  <% end %>
+
+  <br />

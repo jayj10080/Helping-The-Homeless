@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root 'places#home'
   get 'resources', to: 'places#resources'
   resources :places, only: [:index]
-  resources :helpers, only: [:index, :new, :create, :show]
-  resources :helpees, only: [:index, :new, :create, :show]
+  resources :helpers, only: [:index, :new, :create, :show, :edit, :update]
+  resources :helpees, only: [:index, :new, :create, :show, :edit, :update]
 end

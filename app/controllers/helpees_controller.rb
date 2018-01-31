@@ -11,6 +11,16 @@ class HelpeesController < ApplicationController
     @helpee = Helpee.find(params[:id])
   end
 
+  def edit
+    @helpee = Helpee.find(params[:id])
+  end
+
+  def update
+    @helpee = Helpee.find(params[:id])
+    @helpee.update_attributes(helpee_params)
+    redirect_to helpee_path(@helpee)
+  end
+
   def create
   @helpee = current_user.helpees.create(helpee_params)
   redirect_to root_path

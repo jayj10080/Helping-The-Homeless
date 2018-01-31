@@ -1,0 +1,31 @@
+
+
+<h1>home</h1>
+<div class='col-10 offset-1 text-center'>
+  <h1>Create A Profile</h1>
+</div>
+
+<br />
+<br />
+<div class="container">
+  <div class="row">
+
+<div class='col-5 offset-1'>
+  <%= link_to 'I want to help others', new_helper_path, class: 'navbar-brand index-helpers' %>
+</div>
+
+<div class='col-5 offset-1'> 
+  <%= link_to 'I need help', new_helpee_path, class: 'navbar-brand index-helpers' %>
+</div>
+
+</div>
+</div>
+
+<br />
+
+<div class='col-10 offset-1'>
+  <%= link_to 'See all of our helpers and those in need', root_path, class: 'navbar-brand index-helpers' %>
+</div>
+
+<h1><%= link_to 'Resources', resources_path %></h1>
+

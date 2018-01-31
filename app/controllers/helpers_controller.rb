@@ -7,6 +7,10 @@ class HelpersController < ApplicationController
     @helper = Helper.new
   end
 
+  def show
+     @helper = Helper.find(params[:id])
+  end
+
   def create
     Helper.create(helper_params)
     redirect_to root_path

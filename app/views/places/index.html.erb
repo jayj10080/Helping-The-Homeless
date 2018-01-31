@@ -1,22 +1,37 @@
+<h1>index</h1>
 
-<div class='booyah-box'>
+<div class="col-10 offset-1 text-center">
+  <h1>Current members of our community</h1>
 </div>
 
+<br />
 
 <div class="container">
   <div class="row">
 
-<div class='booyah-box col-5 offset-1'>
-  <h1>Helpers</h1>
-  <%= link_to 'Helpers', helpers_path, class: 'navbar-brand' %>
+<div class="col-5 offset-1">
+  <h2>Who is helping others</H2>
+  <br />
+  <% @helper.each do |helper| %>
+    <h1><%= link_to helper.name, helper_path(helper) %></h1>
+  <% end %>
 </div>
 
-<div class='booyah-box col-5 offset-1'> 
-  <h1>Who needs help?</h1>
+<div class="col-5 offset-1">
+  <h2>Who needs help?</h2>
+  <br />
+  <% @helpee.each do |helpee| %>
+    <h1><%= link_to helpee.name, helpee_path(helpee) %></h1>
+  <% end %>
 </div>
 
 </div>
 </div>
+
+<h1><%= link_to 'Resources', resources_path %></h1>
+
+
+
   
 
 

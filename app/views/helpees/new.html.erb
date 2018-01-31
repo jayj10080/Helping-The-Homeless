@@ -1,0 +1,11 @@
+<div class="booyah-box col-10 offset-1">
+  <h1>Tell Us About You</h1>
+  <%= simple_form_for @helpee do |f| %>
+    <%= f.input :name %>
+    <%= f.input :about %>
+    <%= f.input :story %>
+    <%= f.input :need %>
+    <br />
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -11,8 +11,18 @@ class HelpersController < ApplicationController
      @helper = Helper.find(params[:id])
   end
 
+  def edit
+    @helper = Helper.find(params[:id])
+  end
+
+  def update
+    @helper = Helper.find(params[:id])
+    @helper.update_attributes(helper_params)
+    redirect_to helper_path(@helper)
+  end
+
   def create
-    Helper.create(helper_params)
+    @helper = current_user.helpers.create(helper_params)
     redirect_to root_path
   end
 

@@ -22,8 +22,8 @@ class HelpeesController < ApplicationController
   end
 
   def create
-  @helpee = current_user.helpees.create(helpee_params)
-  redirect_to root_path
+    @helpee = current_user.helpees.create(helpee_params)
+    redirect_to root_path
   end
 
   private

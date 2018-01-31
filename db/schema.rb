@@ -39,11 +39,6 @@ ActiveRecord::Schema.define(version: 20180131003739) do
     t.index ["user_id"], name: "index_helpers_on_user_id", using: :btree
   end
 
-  create_table "people", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "places", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

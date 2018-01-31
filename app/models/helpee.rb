@@ -1,3 +1,7 @@
 class Helpee < ApplicationRecord
-  belongs_to :place
+  belongs_to :user
+  geocoded_by :address
+  after_validation :geocode
+
+  
 end

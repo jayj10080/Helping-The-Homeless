@@ -1,4 +1,6 @@
 class HelpeesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @helpee = Helpee.all
   end

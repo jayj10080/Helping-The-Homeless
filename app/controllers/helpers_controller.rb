@@ -1,4 +1,6 @@
 class HelpersController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @helper = Helper.all
   end

@@ -15,16 +15,26 @@ class HelpersController < ApplicationController
 
   def edit
     @helper = Helper.find(params[:id])
+
+    if @helper.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
   end
 
   def update
     @helper = Helper.find(params[:id])
+    if @helper.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
     @helper.update_attributes(helper_params)
     redirect_to helper_path(@helper)
   end
 
   def destroy
     @helper = Helper.find(params[:id])
+    if @helper.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
     @helper.destroy
     redirect_to root_path
   end

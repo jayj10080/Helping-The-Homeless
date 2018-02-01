@@ -15,16 +15,26 @@ class HelpeesController < ApplicationController
 
   def edit
     @helpee = Helpee.find(params[:id])
+
+    if @helpee.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
   end
 
   def update
     @helpee = Helpee.find(params[:id])
+    if @helpee.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
     @helpee.update_attributes(helpee_params)
     redirect_to helpee_path(@helpee)
   end
 
   def destroy
     @helpee = Helpee.find(params[:id])
+    if @helpee.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
     @helpee.destroy
     redirect_to root_path
   end

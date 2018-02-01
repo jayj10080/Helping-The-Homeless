@@ -27,7 +27,11 @@ class HelpersController < ApplicationController
       return render plain: 'Not Allowed', status: :forbidden
     end
     @helper.update_attributes(helper_params)
-    redirect_to helper_path(@helper)
+    if @helper.valid?
+      redirect_to helper_path(@helper)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -41,7 +45,11 @@ class HelpersController < ApplicationController
 
   def create
     @helper = current_user.helpers.create(helper_params)
-    redirect_to root_path
+    if @helper.valid?
+      redirect_to places_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private

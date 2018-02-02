@@ -6,7 +6,11 @@ class HelpeesController < ApplicationController
   end
 
   def new
-    @helpee = Helpee.new
+    if current_user.helper.present?
+      return render plain: 'You already have a helper profile', status: :forbidden
+    else
+      @helpee = Helpee.new
+    end
   end
 
   def show

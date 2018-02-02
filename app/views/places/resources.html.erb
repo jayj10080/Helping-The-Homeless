@@ -1,1 +1,49 @@
 <h1>resources</h1>
+
+<script>
+
+    function initMap() {
+      var myLatLng = {lat: 40.0194747, lng: -105.28127790000002};
+      var second = {lat: 40.062568, lng: -105.282617};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        center: myLatLng
+      });
+
+      var infowindow = new google.maps.InfoWindow();
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+
+      var marker2 = new google.maps.Marker({
+        position: second,
+        map: map,
+        title: 'Hello World!'
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker) {
+        return function() {
+          infowindow.setContent('Bridge House');
+          infowindow.open(map, marker);
+        }
+      })(marker));
+
+      google.maps.event.addListener(marker2, 'click', (function(marker2) {
+        return function() {
+          infowindow.setContent('<div><strong>' + 'Boulder Shelter The Homeless' + '</strong></div>');
+          infowindow.open(map, marker2);
+        }
+      })(marker2));
+
+    }
+  </script>
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwy0zq-PsBe_jtUVPkba-Jkm09YsXXvmg&callback=initMap">
+  </script>
+
+  <div id="map"></div>

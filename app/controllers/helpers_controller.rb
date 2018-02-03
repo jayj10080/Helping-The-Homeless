@@ -6,6 +6,13 @@ class HelpersController < ApplicationController
   end
 
   def new
+    if current_user.helper.present?
+      return render plain: 'You already have a helper profile', status: :forbidden
+    end
+
+    if current_user.helpee.present?
+      return render plain: 'You already have a helpee profile', status: :forbidden
+    end
     @helper = Helper.new
   end
 
@@ -44,7 +51,11 @@ class HelpersController < ApplicationController
   end
 
   def create
-    @helper = current_user.helpers.create(helper_params)
+    @user = current_user
+    @helper = Helper.new(helper_params)
+    @helper.user = @user
+    @helper.save
+
     if @helper.valid?
       redirect_to places_path
     else

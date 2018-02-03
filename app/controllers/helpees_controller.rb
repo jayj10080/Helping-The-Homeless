@@ -8,9 +8,12 @@ class HelpeesController < ApplicationController
   def new
     if current_user.helper.present?
       return render plain: 'You already have a helper profile', status: :forbidden
-    else
-      @helpee = Helpee.new
     end
+
+    if current_user.helpee.present?
+      return render plain: 'You already have a helpee profile', status: :forbidden
+    end
+    @helpee = Helpee.new
   end
 
   def show
@@ -48,7 +51,11 @@ class HelpeesController < ApplicationController
   end
 
   def create
-    @helpee = current_user.helpees.create(helpee_params)
+    @user = current_user
+    @helpee = Helpee.new(helpee_params)
+    @helpee.user = @user
+    @helpee.save
+
     if @helpee.valid?
       redirect_to places_path
     else

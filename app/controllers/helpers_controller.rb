@@ -66,6 +66,6 @@ class HelpersController < ApplicationController
   private
 
   def helper_params
-    params.require(:helper).permit(:name, :about, :how)
+    params.require(:helper).permit(:name, :about, :how, :avatar)
   end
 end

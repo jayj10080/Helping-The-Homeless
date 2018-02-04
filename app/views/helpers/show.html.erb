@@ -4,6 +4,7 @@
 <h1><%= @helper.name %></h1>
 <h1><%= @helper.about %></h1>
 <h1><%= @helper.how %></h1>
+<%= image_tag @helper.avatar %>
 
 <% if current_user && current_user == @helper.user %>
   <%= link_to 'Edit Profile', edit_helper_path(@helper), class: 'btn btn-primary' %>

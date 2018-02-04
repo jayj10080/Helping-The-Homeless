@@ -66,6 +66,6 @@ class HelpeesController < ApplicationController
   private
 
   def helpee_params
-    params.require(:helpee).permit(:name, :about, :story, :need, :address)
+    params.require(:helpee).permit(:name, :about, :story, :need, :address, :avatar)
   end
 end

@@ -3,6 +3,7 @@
 <h1><%= @helpee.story %></h1>
 <h1><%= @helpee.need %></h1>
 <h1><%= @helpee.address %></h1>
+<%= image_tag @helpee.avatar %>
 
 <% if @helpee.latitude.present? && @helpee.longitude.present? %>
  

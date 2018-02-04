@@ -1,5 +1,3 @@
-<h1>index</h1>
-
 <div class="col-10 offset-1 text-center">
   <h1>Current members of our community</h1>
 </div>
@@ -13,7 +11,7 @@
   <h2>Who is helping others</H2>
   <br />
   <% @helper.each do |helper| %>
-    <h1><%= link_to helper.name, helper_path(helper) %></h1>
+    <h1><%= link_to helper.name, helper_path(helper), class:"booyah-box index-text" %></h1>
   <% end %>
 </div>
 
@@ -21,14 +19,14 @@
   <h2>Who needs help?</h2>
   <br />
   <% @helpee.each do |helpee| %>
-    <h1><%= link_to helpee.name, helpee_path(helpee) %></h1>
+    <h1><%= link_to helpee.name, helpee_path(helpee), class:"booyah-box index-text" %></h1>
   <% end %>
 </div>
 
 </div>
 </div>
 
-<h1><%= link_to 'Resources', resources_path %></h1>
+
 
 
 

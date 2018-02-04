@@ -13,6 +13,9 @@
   background: #fff;
   border: 1px solid #ccc;
   border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 20px;
 }
 
 .header-divider {
@@ -29,7 +32,7 @@
 }
 
 #map {
-      height: 300px;
+  height: 300px;
 }
 
 body {
@@ -46,6 +49,11 @@ body {
   background-color: #FFEEEE;
   border-radius: 3px;
   padding: 2px 8px 2px 8px;
+}
+
+.index-text {
+  font-weight: normal;
+  font-size: 30px;
 }
 
 /*<h1>resources</h1>

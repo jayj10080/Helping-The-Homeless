@@ -1,0 +1,47 @@
+<h1>messages</h1>
+
+<% @messages.each do |message| %>
+  <div>
+    <%= message.body %>
+  </div>
+<% end %>
+
+<hr />
+
+<%= simple_form_for @message do |f| %>
+  <%= f.input :body %>
+
+  <%= f.submit "Chat!" %>
+<% end %>
+
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+<script>
+  var lastMessagePageShown = <%= Message.order(:id).last.to_json.html_safe %>;
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBOl_hMGb_qqY5jnZsALk9Z2_H4hiaCTY8",
+    authDomain: "passion-chat.firebaseapp.com",
+    databaseURL: "https://passion-chat.firebaseio.com",
+    projectId: "passion-chat",
+    storageBucket: "passion-chat.appspot.com",
+    messagingSenderId: "501201445940"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  var messageRef = database.ref('message');
+  console.log(messageRef);
+  messageRef.on('value', function(snapshot) {
+    // updateStarCount(postElement, snapshot.val());
+    // console.log(snapshot.val());
+    var values = snapshot.val();
+    var ids = Object.keys(values);
+    var lastId = ids[ids.length - 1];
+    var lastMessage = values[lastId];
+    console.log(lastMessage);
+    if(lastMessagePageShown.id < lastMessage.id) {
+      location.reload();
+    }
+  });
+</script>

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :places, only: [:index]
   resources :helpers
   resources :helpees
+  resources :messages, only: [:index, :create]
 end

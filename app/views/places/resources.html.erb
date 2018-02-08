@@ -3,41 +3,39 @@
 <script>
 
     function initMap() {
-      var myLatLng = {lat: 40.0194747, lng: -105.28127790000002};
-      var second = {lat: 40.062568, lng: -105.282617};
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 11,
-        center: myLatLng
+        center: {lat: 40.0194747, lng: -105.28127790000002}
       });
+
+      var marker = [
+      new google.maps.Marker({
+        position: {lat: 40.0194747, lng: -105.28127790000002},
+        map: map,
+        title: 'Hello World!',
+        content: 'Bridge House'
+      }),
+
+      new google.maps.Marker({
+        position: {lat: 40.062568, lng: -105.282617},
+        map: map,
+        title: 'Hello World!',
+        content: '<div><strong>' + 'Boulder Shelter The Homeless' + '</strong></div>'
+      })
+
+      ];      
 
       var infowindow = new google.maps.InfoWindow();
 
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Hello World!'
-      });
-
-      var marker2 = new google.maps.Marker({
-        position: second,
-        map: map,
-        title: 'Hello World!'
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker) {
+      marker.forEach (function(marker){
+        google.maps.event.addListener(marker, 'click', (function(marker) {
         return function() {
-          infowindow.setContent('Bridge House');
+          infowindow.setContent(marker.content);
           infowindow.open(map, marker);
         }
-      })(marker));
-
-      google.maps.event.addListener(marker2, 'click', (function(marker2) {
-        return function() {
-          infowindow.setContent('<div><strong>' + 'Boulder Shelter The Homeless' + '</strong></div>');
-          infowindow.open(map, marker2);
-        }
-      })(marker2));
+      })(marker))
+      });
 
     }
   </script>

@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :helpers
   resources :helpees
   resources :messages, only: [:index, :create]
+  resources :conversations do
+    resources :direct_messages
+  end
 end

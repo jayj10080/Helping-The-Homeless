@@ -59,7 +59,8 @@ body {
 .img-button {
   position: relative;
   top: 100px;
-  right: 44%;
+  right: 44.1%;
+  z-index: 1;
 }
 
 .hero {
@@ -70,5 +71,20 @@ body {
 #myModalLabel {
   padding-right: 27%;
 }
+
+.mission {
+  
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+
 
 

@@ -1,52 +1,21 @@
-<div class='col-10 offset-1 text-center'>
-  <h1>Create A Profile</h1>
-</div>
 
-<br />
-<br />
-
-<div class="container">
-  <div class="row">
-
-<div class='col-5 offset-1 text-center'>
-  <%= link_to 'I want to help', new_helper_path, class: 'navbar-brand index-helpers' %>
-</div>
-
-<div class='col-5 offset-1 text-center'> 
-  <%= link_to 'I need help', new_helpee_path, class: 'navbar-brand index-helpers' %>
-</div>
-
-</div>
-</div>
-
-<br />
-
-<div class='col-10 offset-1 text-center'>
-  <%= link_to 'See all of our helpers and those in need', places_path, class: 'navbar-brand index-helpers' %>
-</div>
 
 <div id="Slogan">
   <h1>
-  <%= image_tag "img1.jpg" %>
-  <%= image_tag "img2.jpg" %>
-  <%= image_tag "img3.jpg" %>
-  <%= image_tag "img4.jpg" %>
-  <%= image_tag "img5.jpg" %>
-  <%= image_tag "img6.jpg" %>
-  <%= image_tag "img7.jpg" %>
-  <%= image_tag "img8.jpg" %>
-  <%= image_tag "img9.jpg" %>
-  <%= image_tag "img10.jpg" %>
-  <%= image_tag "img11.jpg" %>
-  <%= image_tag "img12.jpg" %>
-  <%= image_tag "img13.jpg" %>
-  <%= image_tag "img14.jpg" %>
-  <%= image_tag "img15.jpg" %>
-
+    <%= image_tag "img1.jpg", class: 'img-fluid hero' %>
   </h1>
-</div>
 
-<script type="text/javascript">
+  <button type="button" class="btn btn-primary btn-lg float-right img-button" data-toggle="modal" data-target="#myModal">
+    Add A Profile
+  </button>
+
+</div>
+<h2 class="text-center">Our Mission</h2>
+
+<br />
+<br />
+
+<!-- <script type="text/javascript">
 
 // Define a random integer function
 function random( n ){
@@ -71,4 +40,47 @@ var interval_id = setInterval( function(){
 }, 2 * transition_time + waiting_time);
 
 </script>
+ -->
+
+
+
+<br />
+<br />
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 id="myModalLabel">Create A Profile</h4>
+      </div>
+
+    
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+
+            <div class='col-5 offset-1 text-center'>
+              <%= link_to("Give Help", new_helper_path, class: "btn btn-primary different-color-button btn-lg") %>
+            </div>
+
+            <div class='col-5 offset-1 text-center'> 
+              <%= link_to("Get Help", new_helpee_path, class: "btn btn-primary different-color-button btn-lg") %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
 

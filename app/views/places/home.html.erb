@@ -1,29 +1,86 @@
-<div class='col-10 offset-1 text-center'>
-  <h1>Create A Profile</h1>
+
+
+<div id="Slogan">
+  <h1>
+    <%= image_tag "img1.jpg", class: 'img-fluid hero' %>
+  </h1>
+
+  <button type="button" class="btn btn-primary btn-lg float-right img-button" data-toggle="modal" data-target="#myModal">
+    Add A Profile
+  </button>
+
 </div>
+<h2 class="text-center">Our Mission</h2>
 
 <br />
 <br />
 
-<div class="container">
-  <div class="row">
+<!-- <script type="text/javascript">
 
-<div class='col-5 offset-1 text-center'>
-  <%= link_to 'I want to help', new_helper_path, class: 'navbar-brand index-helpers' %>
-</div>
+// Define a random integer function
+function random( n ){
+    return Math.floor( Math.random() * n );
+}
 
-<div class='col-5 offset-1 text-center'> 
-  <%= link_to 'I need help', new_helpee_path, class: 'navbar-brand index-helpers' %>
-</div>
+// Define some variables, hide all images and show just one of them.
+var transition_time = 1000;
+var waiting_time = 2000;
+var images = $('div#Slogan img');
+var n = images.length;
+var current = random( n );
+images.hide();
+images.eq( current ).show();
 
-</div>
-</div>
+// Periodically, we fadeOut the current image and fadeIn a random one
+var interval_id = setInterval( function(){
+    images.eq( current ).fadeOut( transition_time, function(){
+        current = random( n );
+        images.eq( current ).fadeIn( transition_time );
+    } );
+}, 2 * transition_time + waiting_time);
+
+</script>
+ -->
+
+
 
 <br />
+<br />
 
-<div class='col-10 offset-1 text-center'>
-  <%= link_to 'See all of our helpers and those in need', places_path, class: 'navbar-brand index-helpers' %>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 id="myModalLabel">Create A Profile</h4>
+      </div>
+
+    
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+
+            <div class='col-5 offset-1 text-center'>
+              <%= link_to("Give Help", new_helper_path, class: "btn btn-primary different-color-button btn-lg") %>
+            </div>
+
+            <div class='col-5 offset-1 text-center'> 
+              <%= link_to("Get Help", new_helpee_path, class: "btn btn-primary different-color-button btn-lg") %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
 </div>
-
 
 

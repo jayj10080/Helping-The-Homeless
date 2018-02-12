@@ -1,42 +1,72 @@
-<h1><%= @helpee.name %></h1>
-<h1><%= @helpee.about %></h1>
-<h1><%= @helpee.story %></h1>
-<h1><%= @helpee.need %></h1>
-<h1><%= @helpee.address %></h1>
-<%= image_tag @helpee.avatar %>
+<div class="booyah-box col-10 offset-1">
+  <div class="row">
+    <div class="col-12 col-xl-3">
+      <div>
+        <% if @helpee.avatar.present? %>
+          <%= image_tag @helpee.avatar %>
+        <% else %>
+          <%= image_tag "fillerProfile.jpg" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="col-xl-9 underline-words">
+      <% if current_user && current_user == @helpee.user %>
+        <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary float-right' %>
+      <% end %>
+      <h1><%= @helpee.name %></h1>
+      <br />
+      <h3>About Me</h3>
+      <p><%= @helpee.about %></p>
+    </div>
+  </div>
+  <br />
+  <div class="underline-words">
+    <h3>What's my story?</h3>
+    <p><%= @helpee.story %></p>
+    <h3>What I need</h3>
+    <p><%= @helpee.need %></p>
+  </div>
+
+  <div class="float-right">
+    <% if current_user && current_user == @helpee.user %>
+      <%= link_to 'Edit Profile', edit_helpee_path(@helpee), class: 'btn btn-primary' %>
+      <%= link_to 'Delete Profile', helpee_path(@helpee), method: :delete, data: 
+      {confirm: 'Are you sure you want to delete your profile?'}, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+<br />
+</div>
 
 <% if @helpee.latitude.present? && @helpee.longitude.present? %>
- 
-  <script>
+<script>
+  function initMap() {
+    var myLatLng = {lat: <%= @helpee.latitude %>, lng: <%= @helpee.longitude %>};
 
-    function initMap() {
-      var myLatLng = {lat: <%= @helpee.latitude %>, lng: <%= @helpee.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: myLatLng
+    });
 
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: myLatLng
-      });
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Come find me'
+    });
+  }
+</script>
 
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Hello World!'
-      });
-    }
-  </script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwy0zq-PsBe_jtUVPkba-Jkm09YsXXvmg&callback=initMap">
+</script>
 
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwy0zq-PsBe_jtUVPkba-Jkm09YsXXvmg&callback=initMap">
-  </script>
-
-  <div id="map"></div>
-
-  <% end %>
-
+<br />
+<br />
+<br />
+<div class="text-center">
+  <h3>Where you may be able to find me</h3>
   <br />
-
-  <% if current_user && current_user == @helpee.user %>
-    <%= link_to 'Edit Profile', edit_helpee_path(@helpee), class: 'btn btn-primary' %>
-    <%= link_to 'Delete Profile', helpee_path(@helpee), method: :delete, data: 
-    {confirm: 'Are you sure you want to delete your profile?'},class: 'btn btn-danger' %> 
-  <% end %>
+</div>
+<div id="map"></div>
+<% end %>

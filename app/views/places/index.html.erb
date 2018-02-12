@@ -21,8 +21,8 @@
                 <%= image_tag "fillerProfile.jpg" %>
               <% end %>
             </div>
-            <div class="col-6">
-              <h1><%= link_to helper.name, helper_path(helper), class: "index-text" %></h1>
+            <div class="col-6 index-name">
+              <h1 class="index-text"><%= link_to helper.name, helper_path(helper) %></h1>
             </div>
           <% end %>
         </div>
@@ -37,14 +37,14 @@
       <div class="booyah-box">
         <div class="row">
           <% @helpee.each do |helpee| %>
-            <div class="col-5">
+            <div class="col-6">
               <% if helpee.avatar.present? %>
                 <%= image_tag helpee.avatar, class: "image-index" %>
               <% else %>
                 <%= image_tag "fillerProfile.jpg" %>
               <% end %>
             </div>
-            <div class="col-5">
+            <div class="col-6 index-name">
               <h1><%= link_to helpee.name, helpee_path(helpee), class: "index-text" %></h1>
             </div>
           <% end %>

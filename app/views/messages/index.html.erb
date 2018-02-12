@@ -1,18 +1,25 @@
-<h1>messages</h1>
+<h1 class="underline-words">Chat Room</h1>
+<br />
 
-<% @messages.each do |message| %>
+
+<div class="booyah-box col-10 offset-1">
+  <% @messages.each do |message| %>
   <div>
+    <strong class="inline-space"><%= current_user.email %></strong><%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %></div>
     <%= message.body %>
-  </div>
-<% end %>
+  <% end %>
+</div>
+</div>
 
-<hr />
+<hr class="col-10 offset-1" />
 
+<div class="col-10 offset-1 text-insert">
 <%= simple_form_for @message do |f| %>
   <%= f.input :body %>
 
-  <%= f.submit "Chat!" %>
+  <%= f.submit "Chat!", class: "btn btn-primary" %>
 <% end %>
+</div>
 
 <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
 <script>

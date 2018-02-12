@@ -1,4 +1,4 @@
-<div class="col-10 offset-1 text-center">
+<div class="col-10 offset-1 text-center index-heading">
   <h1>Current members of our community</h1>
 </div>
 
@@ -6,24 +6,53 @@
 
 <div class="container">
   <div class="row">
+    <div class="col-6">
+      <div class="text-center">
+        <h2>Who is helping others</h2>
+      </div>
+      <br />
+      <div class="booyah-box">
+        <div class="row">
+          <% @helper.each do |helper| %>
+            <div class="col-6">
+              <% if helper.avatar.present? %>
+                <%= image_tag helper.avatar, class: "image-index" %>
+              <% else %>
+                <%= image_tag "fillerProfile.jpg" %>
+              <% end %>
+            </div>
+            <div class="col-6">
+              <h1><%= link_to helper.name, helper_path(helper), class: "index-text" %></h1>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-<div class="col-5 offset-1">
-  <h2>Who is helping others</H2>
-  <br />
-  <% @helper.each do |helper| %>
-    <h1><%= link_to helper.name, helper_path(helper), class:"booyah-box index-text" %></h1>
-  <% end %>
-</div>
+    <div class="col-6">
+      <div class="text-center">
+        <h2>Who needs help?</h2>
+      </div>
+      <br />
+      <div class="booyah-box">
+        <div class="row">
+          <% @helpee.each do |helpee| %>
+            <div class="col-5">
+              <% if helpee.avatar.present? %>
+                <%= image_tag helpee.avatar, class: "image-index" %>
+              <% else %>
+                <%= image_tag "fillerProfile.jpg" %>
+              <% end %>
+            </div>
+            <div class="col-5">
+              <h1><%= link_to helpee.name, helpee_path(helpee), class: "index-text" %></h1>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-<div class="col-5 offset-1">
-  <h2>Who needs help?</h2>
-  <br />
-  <% @helpee.each do |helpee| %>
-    <h1><%= link_to helpee.name, helpee_path(helpee), class:"booyah-box index-text" %></h1>
-  <% end %>
-</div>
-
-</div>
+  </div>
 </div>
 
 

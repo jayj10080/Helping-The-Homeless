@@ -7,6 +7,7 @@ class PlacesController < ApplicationController
   def index
     @helper = Helper.all
     @helpee = Helpee.all
+    
   end
 
   def resources

@@ -1,3 +1,39 @@
+
+  <div class="booyah-box col-10 offset-1 underline-words">
+  
+    <%= image_tag @helpee.avatar, class: "left" %>
+    <h1><%= @helpee.name %></h1>
+    <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary right button-top' %>
+    <br />
+    
+  
+  <h3>About Me</h3>
+  <p><%= @helpee.about %></p>
+
+  <h3>What's my story?</h3>
+    <p><%= @helpee.story %></p>
+    <h3>What I need</h3>
+    <p><%= @helpee.need %></p>
+
+    <div class="float-right">
+    <% if current_user && current_user == @helpee.user %>
+      <%= link_to 'Edit Profile', edit_helpee_path(@helpee), class: 'btn btn-primary' %>
+      <%= link_to 'Delete Profile', helpee_path(@helpee), method: :delete, data: 
+      {confirm: 'Are you sure you want to delete your profile?'}, class: 'btn btn-danger' %>
+    <% end %>
+  </div>
+  <br />
+</div>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
 <div class="booyah-box col-10 offset-1">
   <div class="row">
     <div class="col-12 col-xl-3">

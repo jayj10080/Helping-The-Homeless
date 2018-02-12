@@ -3,7 +3,9 @@
   
     <%= image_tag @helpee.avatar, class: "left" %>
     <h1><%= @helpee.name %></h1>
-    <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary right button-top' %>
+    <% if current_user && current_user == @helpee.user %>
+        <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary right button-top' %>
+      <% end %>
     <br />
     
   

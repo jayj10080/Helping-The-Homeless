@@ -6,6 +6,7 @@
    <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
     <% if conversation.sender_id == current_user.id %>
       <% recipient = User.find(conversation.recipient_id) %>
+      <br />
     <% else %>
       <% recipient = User.find(conversation.sender_id) %>
     <% end %>

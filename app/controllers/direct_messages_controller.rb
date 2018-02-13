@@ -14,7 +14,8 @@ def index
   end
  if @messages.last
   if @messages.last.user_id != current_user.id
-   @messages.last.read = true;
+   @messages.last.read = true
+   # @messages.last.update_attributes(read: true)
   end
  end
 @message = @conversation.direct_messages.new

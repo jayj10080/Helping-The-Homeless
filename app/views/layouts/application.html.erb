@@ -37,7 +37,7 @@
         <% end %>
         <% if current_user.helper %>
           <li class="nav-item">
-            <%= link_to 'My Profile', helpee_path(current_user.helper), class: 'nav-link' %>
+            <%= link_to 'My Profile', helper_path(current_user.helper), class: 'nav-link' %>
           </li>
         <% end %>
         <li class="nav-item">

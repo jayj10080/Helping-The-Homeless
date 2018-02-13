@@ -13,14 +13,21 @@
       new google.maps.Marker({
         position: {lat: 40.0194747, lng: -105.28127790000002},
         map: map,
-        title: 'Hello World!',
-        content: 'Bridge House'
+        title: 'Bridge House',
+         content: '<p><a href="https://boulderbridgehouse.org/">'+
+            'Bridge House</a> '+
+            '</p>' + '<p>' + 'Address: 2691 30th St, Boulder, CO 80301' +
+            '</p>' + '<p>' + 'Hours' + '' + 'Monday 9AM–3PM' + '<br />' + 'hi' + '</p>'
+            
+         //'<div><strong>' + 'Bridge House' + '</strong></div>'
+
+
       }),
 
       new google.maps.Marker({
         position: {lat: 40.062568, lng: -105.282617},
         map: map,
-        title: 'Hello World!',
+        title: 'Bridge House',
         content: '<div><strong>' + 'Boulder Shelter The Homeless' + '</strong></div>'
       })
 

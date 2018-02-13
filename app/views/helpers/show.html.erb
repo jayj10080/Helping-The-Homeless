@@ -1,4 +1,4 @@
-<div class="booyah-box col-10 offset-1 underline-words">
+<div class="booyah-box col-10 offset-1">
   
     <%= image_tag @helper.avatar, class: "left" %>
     <h1><%= @helper.name %></h1>
@@ -8,10 +8,10 @@
     <br />
     
   
-  <h3>About Me</h3>
+  <h3 class="underline-words">About Me</h3>
   <p><%= @helper.about %></p>
 
-  <h3>How and why I want to help</h3>
+  <h3 class="underline-words">How and why I want to help</h3>
     <p><%= @helper.how %></p>
 
     <div class="float-right">

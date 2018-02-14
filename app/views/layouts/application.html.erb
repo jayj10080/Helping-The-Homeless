@@ -55,6 +55,8 @@
   </div>
 </nav>
 
+<%= current_user.unread_direct_messages %>
+
     <% if notice.present? %>
       <p class="alert alert-info"><%= notice %></p>
     <% end %>

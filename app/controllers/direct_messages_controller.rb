@@ -34,3 +34,5 @@ private
   params.require(:direct_message).permit(:body, :user_id)
  end
 end
+
+# change user_id to sender_id so people can better understand code

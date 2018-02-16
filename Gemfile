@@ -67,5 +67,7 @@ gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 gem "fog-aws"
 gem "firebase"
+gem "font-awesome-rails"
+gem 'bootstrap-sass', '~> 3.3.7'
 
 

@@ -36,7 +36,7 @@
             <%= link_to helpee_path(current_user.helpee), class: 'nav-link' do %>
               <% if current_user.unread_direct_messages > 0 %>
                 <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-                title="You have unread messages"></i>
+                title="You have unread messages" data-animation=""></i>
               <% end %>
               My Profile
             <% end %>

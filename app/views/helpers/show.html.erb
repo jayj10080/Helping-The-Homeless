@@ -1,15 +1,21 @@
 <div class="booyah-box col-10 offset-1">
-  
+  <% if @helper.avatar.present? %>
     <%= image_tag @helper.avatar, class: "left" %>
-    <h1><%= @helper.name %></h1>
-    <% if current_user && current_user == @helper.user %>
-        <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary float-right' %>
-      <% end %>
-    <br />
+  <% else %>
+    <%= image_tag "fillerProfile.jpg", class: "left" %>
+  <% end %>
+
+  <h1><%= @helper.name %></h1>
+
+  <% if current_user && current_user == @helper.user %>
+      <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary float-right' %>
+    <% end %>
+  <br />
     
-  
-  <h3 class="underline-words">About Me</h3>
-  <p><%= @helper.about %></p>
+  <% if @helper.about %>
+    <h3 class="underline-words">About Me</h3>
+    <p><%= @helper.about %></p>
+  <% end %>
 
   <h3 class="underline-words">How and why I want to help</h3>
     <p><%= @helper.how %></p>

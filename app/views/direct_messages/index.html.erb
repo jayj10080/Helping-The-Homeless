@@ -34,3 +34,17 @@
  </div>
 <% end %>
 </div>
+
+
+<h1 id="target">Click</h1>
+<%= @message.read %>
+<script type="text/javascript">
+$( "#target" ).click(function() {
+  $.ajax({
+   url: '/conversations/' + <%= @conversation.id %>,
+   type: 'PUT',
+   success: function(response) {
+    }
+});
+});
+</script>

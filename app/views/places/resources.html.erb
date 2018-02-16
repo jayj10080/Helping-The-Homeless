@@ -15,9 +15,10 @@
         map: map,
         title: 'Bridge House',
          content: '<p><a href="https://boulderbridgehouse.org/">'+
-            'Bridge House</a> '+
-            '</p>' + '<p>' + 'Address: 2691 30th St, Boulder, CO 80301' +
-            '</p>' + '<p>' + 'Hours' + '' + 'Monday 9AM–3PM' + '<br />' + 'hi' + '</p>'
+            '<b class="underline-words">Bridge House</b></a> ' + '<br />' + 'Address: 2691 30th St, Boulder, CO 80301' + '<br/>' +
+            '(303) 442-8300' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + 'Monday 9AM–3PM' + '<br />' + 'Tuesday 9AM–3PM' + 
+            '<br />' + 'Wednesday 9AM–3PM' + '<br />' + 'Thursday 9AM–3PM' + '<br />' + 'Friday 9AM–3PM' + '<br />' +
+            'Saturday CLOSED' + '<br />' + 'Sunday CLOSED' + '</p>'
             
          //'<div><strong>' + 'Bridge House' + '</strong></div>'
 
@@ -28,7 +29,11 @@
         position: {lat: 40.062568, lng: -105.282617},
         map: map,
         title: 'Bridge House',
-        content: '<div><strong>' + 'Boulder Shelter The Homeless' + '</strong></div>'
+        content: '<p><a href="https://bouldershelter.org/">'+
+            '<b class="underline-words">Boulder Shelter The Homeless</b></a> ' + '<br />' + '4869 Broadway St, Boulder, CO 80304' + 
+            '<br/>' + '303-442-4646' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + 'Monday 5PM-10AM' + 
+            '<br />' + 'Tuesday 5PM-10AM' + '<br />' + 'Wednesday 5PM-10AM' + '<br />' + 'Thursday 5PM-10AM' + '<br />' + 'Friday 5PM-10AM' + 
+            '<br />' + 'Saturday 5PM-10AM' + '<br />' + 'Sunday 5PM-10AM' + '</p>'
       })
 
       ];      
@@ -45,10 +50,22 @@
       });
 
     }
-  </script>
+</script>
 
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwy0zq-PsBe_jtUVPkba-Jkm09YsXXvmg&callback=initMap">
-  </script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwy0zq-PsBe_jtUVPkba-Jkm09YsXXvmg&callback=initMap">
+</script>
 
-  <div id="map"></div>
+<div id="map"></div>
+
+<br />
+<br />
+  
+<div class="booyah-box col-10 offset-1">
+  <%= image_tag "bridge_house.jpg", class: 'img-fluid left' %>
+  <h1>Bridge House</h1>
+  <br />
+  <h3 class="underline-words">About</h3>
+  <p>Bridge House plays a crucial role addressing homelessness. Not only do we provide outreach case management services for basic needs-from bus fare to prescription medications- we also provide employment services and nightly meals at our Community Table dinner program. Bridge House is a bridge for many seeking a pathway out of homelessness.</p>
+</div>
+  

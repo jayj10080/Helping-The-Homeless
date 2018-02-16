@@ -20,6 +20,23 @@ def index
  end
 @message = @conversation.direct_messages.new
  end
+
+def update
+  @message = DirectMessage.find(params[:id])
+  logger.debug "New article: #{@message.inspect}"
+  @message.read = true
+  @message.save
+
+  
+  
+  
+
+  # @message = DirectMessage.find(params[:id])
+  # @message.update_attributes(:read => true))
+
+  
+end
+
 def new
  @message = @conversation.direct_messages.new
 end

@@ -4,6 +4,12 @@ def index
  @users = User.all
  @conversations = Conversation.all
  end
+
+ def update
+  @conversation = Conversation.find(params[:id])
+  @conversation.direct_messages.update_all(read: true)
+ end
+
 def create
  if Conversation.between(params[:sender_id],params[:recipient_id])
    .present?

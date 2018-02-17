@@ -17,8 +17,10 @@
     <p><%= @helper.about %></p>
   <% end %>
 
-  <h3 class="underline-words">How and why I want to help</h3>
+  <% if @helper.how %>
+    <h3 class="underline-words">How and why I want to help</h3>
     <p><%= @helper.how %></p>
+  <% end %>
 
     <div class="float-right">
     <% if current_user && current_user == @helper.user %>

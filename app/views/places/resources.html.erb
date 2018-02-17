@@ -1,4 +1,17 @@
+<ul class="nav">
+    <li><a href="javascript:triggerClick(0)">location1</a>
 
+    </li>
+    <li><a href="javascript:triggerClick(1)">location2</a>
+
+    </li>
+    <li><a href="javascript:triggerClick(2)">location3</a>
+
+    </li>
+    <li><a href="javascript:triggerClick(3)">location4</a>
+
+    </li>
+</ul>
 
 <script>
 
@@ -71,12 +84,30 @@
 
     }
 
-    google.maps.event.addListener('#clickthis', 'click', (function(marker) {
-        return function() {
-          infowindow.setContent(marker[3].content);
-          infowindow.open(map, marker[3]);
-        }
-      })(marker[3]));
+    // Here I am trying to get the corresponding infowindow to popup on the map after the div below with id #clickthis is clicked
+    // google.maps.event.addListener('#clickthis', 'click', (function(marker) {
+    //     return function() {
+    //       infowindow.setContent(marker[3].content);
+    //       infowindow.open(map, marker[3]);
+    //     }
+    //   })(marker[3]));
+
+    
+
+    // second attempt at triggering info window from outside link
+    // liTag=$("body div#clickthis")
+    // $(liTag).click(function() {
+    //     infowindow.setContent(marker[3].content);
+    //     infowindow.open(map, marker[3]);
+    //   });
+
+    // Third attempt
+    // google.maps.event.addDomListener(window,'load',initialize);
+    google.maps.event.addDomListener(window,'load',initialize);
+    function triggerClick(i) {
+      google.maps.event.trigger(markers[3], 'click');
+    //map.getBounds();  
+    }
 </script>
 
 <script async defer
@@ -111,6 +142,15 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwy0zq-PsBe_jtUVPkba-Jkm0
   <br />
   <h3 class="underline-words">About</h3>
   <p>If you’re 12 to 24 years old and need help, Attention Homes is there for you. They offer shelter, food, clothing, counseling, education programs, health care, transportation assistance, and more. Their team of caring, experienced counselors and volunteers are trained to help you in every way possible.</p>
+</div>
+
+<div class="booyah-box col-10 offset-1" id="clickthis">
+  <%= image_tag "efaa.jpg", class: 'img-fluid left' %>
+  <h1>EFAA</h1>
+  <br />
+  <h3 class="underline-words">About</h3>
+  <p>Since 1918, EFAA has been the community safety net for families who have nowhere else to turn when they can’t meet their basic needs.</p>
+  <p>EFAA Provides food and help with critical expenses, like rent, utilities, minor medical costs and transportation.</p>
 </div>
 
 <div class="booyah-box col-10 offset-1" id="clickthis">

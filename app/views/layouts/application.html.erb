@@ -6,6 +6,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="//code.jboxcdn.com/0.4.9/jBox.min.js"></script>
+    <link href="//code.jboxcdn.com/0.4.9/jBox.css" rel="stylesheet">
     
   </head>
 
@@ -35,23 +38,54 @@
           <li class="nav-item">
             <%= link_to helpee_path(current_user.helpee), class: 'nav-link' do %>
               <% if current_user.unread_direct_messages > 0 %>
-                <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-                title="You have unread messages" data-animation=""></i>
+                <!-- <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
+                title="You have unread messages" data-animation=""></i> -->
               <% end %>
+              
               My Profile
             <% end %>
+
+            <a href="#">
+                <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
+                title="You have unread messages"></i>
+              </a>
           </li>
         <% end %>
         <% if current_user.helper %>
-          <li class="nav-item">
+          <li class="nav-item li-padding">
             <%= link_to helper_path(current_user.helper), class: 'nav-link' do %>
               <% if current_user.unread_direct_messages > 0 %>
-                <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-                title="You have unread messages"></i>
+                <!-- <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
+                title="You have unread messages"></i> -->
+
+
               <% end %>
               My Profile
+
             <% end %>
+
+            
           </li>
+
+          <li class="nav-item resize-li tooltip" title="You have unread messages">
+            
+            <i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
+                title="You have unread messages" style="padding-left: 0;"></i>
+          </li>
+
+          <!-- code pen option css already present -->
+          <!-- <li class="nav-item tooltip fade" data-title="Message">
+            <i class="fa fa-envelope nav-link resize-icon"></i>
+          </li> -->
+
+          <!-- option using jbox js present on page and in header -->
+          <!-- <li class="nav-item tooltip" title="My tooltip">
+            <i class="fa fa-envelope nav-link resize-icon"></i>
+          </li> -->
+
+          
+
+
         <% end %>
         <li class="nav-item">
           <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
@@ -68,6 +102,12 @@
   </div>
 </nav>
 
+<script type="text/javascript">
+new jBox('Tooltip', {
+  attach: '.tooltip'
+});
+</script>
+
 <% if current_user %>
 <%= current_user.unread_direct_messages %>
 <% end %>
@@ -81,5 +121,7 @@
     <%= yield %>
   </body>
 </html>
+
+
 
 

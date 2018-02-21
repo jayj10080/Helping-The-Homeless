@@ -10,7 +10,8 @@
     <% else %>
       <% recipient = User.find(conversation.sender_id) %>
     <% end %>
-    <%= link_to recipient.email,   conversation_direct_messages_path(conversation)%>
+    <%= link_to recipient.email,   conversation_direct_messages_path(conversation)%> |
+      <%= current_user.all_unread_conversation_messages(conversation) %>
    <% end %>
   <% end %>
   </div>

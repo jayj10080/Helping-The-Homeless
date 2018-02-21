@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class User < ActiveRecord::Base
   has_one :helpee
   has_one :helper
   # Include default devise modules. Others available are:
@@ -9,14 +9,23 @@ class User < ApplicationRecord
   has_many :conversations_as_sender, :foreign_key => :sender_id, class_name: 'Conversation'
   has_many :conversations_as_recipient, :foreign_key => :recipient_id, class_name: 'Conversation'
 
-  def unread_direct_messages
-    sum = 0
-    conversations_as_recipient.each do |conversation|
-      sum += conversation.unread
-    end
-    conversations_as_sender.each do |conversation|
-      sum += conversation.unread
-    end
-    sum
+  def all_unread_direct_messages
+    DirectMessage.where(recipient_id: self.id, read: false).count
   end
+
+  def all_unread_conversation_messages(convo)
+    DirectMessage.where(recipient_id: self.id, read: false, conversation_id: convo.id).count
+    
+  end
+
+  # def all_unread_direct_messages
+  #   sum = 0
+  #   conversations_as_recipient.each do |conversation|
+  #     sum += conversation.unread
+  #   end
+  #   conversations_as_sender.each do |conversation|
+  #     sum += conversation.unread
+  #   end
+  #   sum
+  # end
 end

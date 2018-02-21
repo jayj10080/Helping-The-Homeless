@@ -46,7 +46,7 @@
             title="You have unread messages"></i>
             </a> -->
           </li>
-          <% if current_user.unread_direct_messages > 0 %>
+          <% if current_user.all_unread_direct_messages > 0 %>
             <li class="nav-item resize-li tooltip" title="You have unread messages">
               <i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
               title="You have unread messages" style="padding-left: 0;"></i>
@@ -62,7 +62,7 @@
               My Profile
             <% end %>
           </li>
-          <% if current_user.unread_direct_messages > 0 %>
+          <% if current_user.all_unread_direct_messages > 0 %>
             <li class="nav-item resize-li tooltip" title="You have unread messages">
               <i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
               title="You have unread messages" style="padding-left: 0;"></i>
@@ -100,7 +100,7 @@ new jBox('Tooltip', {
 </script>
 
 <% if current_user %>
-<%= current_user.unread_direct_messages %>
+  <%= current_user.all_unread_direct_messages %>
 <% end %>
 
     <% if notice.present? %>

@@ -1,7 +1,3 @@
-<!-- <a href="#" id="marker1" class="markerclass">Open Info Window</a> -->
-
-
-
 <div id="map"></div>
 
 <br />
@@ -61,52 +57,47 @@
       });
 
       marker = [
-      new google.maps.Marker({
-        position: {lat: 40.0194747, lng: -105.28127790000002},
-        map: map,
-        title: 'Bridge House',
-         content: '<p><a href="https://boulderbridgehouse.org/">'+
-            '<b class="underline-words">Bridge House</b></a> ' + '<br />' + 'Address: 2691 30th St, Boulder, CO 80301' + '<br/>' +
-            '(303) 442-8300' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + 'Monday 9AM–3PM' + '<br />' + 'Tuesday 9AM–3PM' + 
-            '<br />' + 'Wednesday 9AM–3PM' + '<br />' + 'Thursday 9AM–3PM' + '<br />' + 'Friday 9AM–3PM' + '<br />' +
-            'Saturday CLOSED' + '<br />' + 'Sunday CLOSED' + '</p>'
-            
-         //'<div><strong>' + 'Bridge House' + '</strong></div>'
+        new google.maps.Marker({
+          position: {lat: 40.0194747, lng: -105.28127790000002},
+          map: map,
+          title: 'Bridge House',
+           content: '<p><a href="https://boulderbridgehouse.org/">'+
+              '<b class="underline-words">Bridge House</b></a> ' + '<br />' + 'Address: 2691 30th St, Boulder, CO 80301' + '<br/>' +
+              '(303) 442-8300' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + 'Monday 9AM–3PM' + '<br />' + 'Tuesday 9AM–3PM' + 
+              '<br />' + 'Wednesday 9AM–3PM' + '<br />' + 'Thursday 9AM–3PM' + '<br />' + 'Friday 9AM–3PM' + '<br />' +
+              'Saturday CLOSED' + '<br />' + 'Sunday CLOSED' + '</p>'
+        }),
 
+        new google.maps.Marker({
+          position: {lat: 40.062568, lng: -105.282617},
+          map: map,
+          title: 'Boulder Shelter The Homeless',
+          content: '<p><a href="https://bouldershelter.org/">'+
+              '<b class="underline-words">Boulder Shelter The Homeless</b></a> ' + '<br />' + '4869 Broadway St, Boulder, CO 80304' + 
+              '<br/>' + '303-442-4646' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + 'Monday 5PM-10AM' + 
+              '<br />' + 'Tuesday 5PM-10AM' + '<br />' + 'Wednesday 5PM-10AM' + '<br />' + 'Thursday 5PM-10AM' + '<br />' + 'Friday 5PM-10AM' + 
+              '<br />' + 'Saturday 5PM-10AM' + '<br />' + 'Sunday 5PM-10AM' + '</p>'
+        }),
 
-      }),
+        new google.maps.Marker({
+          position: {lat: 40.030667, lng: -105.281725},
+          map: map,
+          title: 'The Source - Boulder Youth Shelter',
+          content: '<p><a href="https://www.attentionhomes.org/thesource/">'+
+              '<b class="underline-words">The Source - Boulder Youth Shelter</b></a> ' + '<br />' + '3080 Broadway, Boulder, CO 80304' + 
+              '<br/>' + '(303) 447-1207' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + '24/7' + '</p>'
+        }),
 
-      new google.maps.Marker({
-        position: {lat: 40.062568, lng: -105.282617},
-        map: map,
-        title: 'Boulder Shelter The Homeless',
-        content: '<p><a href="https://bouldershelter.org/">'+
-            '<b class="underline-words">Boulder Shelter The Homeless</b></a> ' + '<br />' + '4869 Broadway St, Boulder, CO 80304' + 
-            '<br/>' + '303-442-4646' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + 'Monday 5PM-10AM' + 
-            '<br />' + 'Tuesday 5PM-10AM' + '<br />' + 'Wednesday 5PM-10AM' + '<br />' + 'Thursday 5PM-10AM' + '<br />' + 'Friday 5PM-10AM' + 
-            '<br />' + 'Saturday 5PM-10AM' + '<br />' + 'Sunday 5PM-10AM' + '</p>'
-      }),
-
-      new google.maps.Marker({
-        position: {lat: 40.030667, lng: -105.281725},
-        map: map,
-        title: 'The Source - Boulder Youth Shelter',
-        content: '<p><a href="https://www.attentionhomes.org/thesource/">'+
-            '<b class="underline-words">The Source - Boulder Youth Shelter</b></a> ' + '<br />' + '3080 Broadway, Boulder, CO 80304' + 
-            '<br/>' + '(303) 447-1207' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + '24/7' + '</p>'
-      }),
-
-      new google.maps.Marker({
-        position: {lat: 40.058472, lng: -105.277706},
-        map: map,
-        title: 'EFAA',
-        content: '<p><a href="https://www.efaa.org/">'+
-            '<b class="underline-words">EFAA</b></a> ' + '<br />' + '1575 Yarmouth Ave Boulder, CO 80304' + 
-            '<br/>' + '303-442-3042' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + 'Monday 9:30AM-4:30PM' + 
-            '<br />' + 'Tuesday 9:30AM-4:30PM' + '<br />' + 'Wednesday 12PM-4:30PM' + '<br />' + 'Thursday 9:30AM-6PM' + '<br />' + 'Friday 9:30AM-4:30PM' + 
-            '<br />' + 'Saturday CLOSED' + '<br />' + 'Sunday CLOSED' + '</p>'
-      })
-
+        new google.maps.Marker({
+          position: {lat: 40.058472, lng: -105.277706},
+          map: map,
+          title: 'EFAA',
+          content: '<p><a href="https://www.efaa.org/">'+
+              '<b class="underline-words">EFAA</b></a> ' + '<br />' + '1575 Yarmouth Ave Boulder, CO 80304' + 
+              '<br/>' + '303-442-3042' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + 'Monday 9:30AM-4:30PM' + 
+              '<br />' + 'Tuesday 9:30AM-4:30PM' + '<br />' + 'Wednesday 12PM-4:30PM' + '<br />' + 'Thursday 9:30AM-6PM' + '<br />' + 'Friday 9:30AM-4:30PM' + 
+              '<br />' + 'Saturday CLOSED' + '<br />' + 'Sunday CLOSED' + '</p>'
+        })
       ];      
 
       var infowindow = new google.maps.InfoWindow();
@@ -123,15 +114,15 @@
 
     $(document).on("turbolinks:load", function(){
       $(".markerclass").click(function(e) {
-      e.preventDefault();
-      var markerid = $(this).attr("id").replace("marker", "")
-      myClick(markerid);
+        e.preventDefault();
+        var markerid = $(this).attr("id").replace("marker", "")
+        myClick(markerid);
       });
     });
 
     function myClick(id){
       $('html, body').animate({ scrollTop: $('#map').offset().top }, 'slow');
-        google.maps.event.trigger(marker[id], 'click');
+      google.maps.event.trigger(marker[id], 'click');
     }
 
 </script>

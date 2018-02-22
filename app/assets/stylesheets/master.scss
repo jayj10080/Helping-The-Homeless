@@ -304,7 +304,7 @@ li.resize-li {
 
 #banner {
   /*<%= image_tag "img1.jpg", class: 'img-fluid hero' %>*/
-  background-image: url(img1.jpg);
+  background-image: image-url("img1.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -313,7 +313,7 @@ li.resize-li {
 
 #banner2 {
   /*<%= image_tag "img2.jpg", class: 'img-fluid hero' %>*/
-  background-image: url(img2.jpg);
+  background-image: image-url("img2.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;

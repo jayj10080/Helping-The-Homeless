@@ -6,6 +6,6 @@ class NotificationMailer < ApplicationMailer
     @person = @conversation.recipient_id
     @user = User.find(@person)
     mail(to: @user.email,
-      subject: "You have received a new message.")
+      subject: "You have received a new message.  Go to inbox ")
   end
 end

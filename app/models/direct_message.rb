@@ -5,7 +5,7 @@ class DirectMessage < ActiveRecord::Base
   after_create :send_message_email
  
   def message_time
-    created_at.strftime("%m/%d/%y at %l:%M %p")
+    created_at.strftime("%m/%e/%y %l:%M %p ")
   end
 
   def send_message_email

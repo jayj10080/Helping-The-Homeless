@@ -2,7 +2,7 @@
   <% if @helper.avatar.present? %>
     <%= image_tag @helper.avatar, class: "left" %>
   <% else %>
-    <%= image_tag "fillerProfile.jpg", class: "left" %>
+    <%= image_tag "fillerProfile.jpg", class: "left resize-filler" %>
   <% end %>
 
   <h1><%= @helper.name %></h1>

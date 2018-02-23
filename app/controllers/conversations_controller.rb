@@ -16,7 +16,7 @@ def create
      params[:recipient_id]).first
  else
 
-  
+  # if Conversation.recipient_id == User.helpee.user_id || Conversation.recipient_id == User.helper.user_id
   @conversation = Conversation.create!(conversation_params)
 
  end

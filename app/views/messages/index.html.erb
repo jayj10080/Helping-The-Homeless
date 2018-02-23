@@ -6,7 +6,9 @@
 <div class="booyah-box col-10 offset-1">
   <% @messages.each do |message| %>
   <div>
-    <strong class="inline-space"><%= current_user.email %></strong><%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %></div>
+    <strong class="inline-space"><%= link_to message.email, conversations_path(sender_id: current_user.id, 
+    recipient_id: message.user_id), method: 'post' %>
+    </strong><%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %></div>
     
     <%= message.body %>
   <% end %>

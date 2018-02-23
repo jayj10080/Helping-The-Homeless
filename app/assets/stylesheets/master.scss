@@ -372,8 +372,22 @@ li.resize-li {
 }
 
 .chat-pic {
-  width: 50px;
+  width: 45px;
   height: auto;
+  border-radius: 5px;
+}
+
+.no-margin {
+  margin-left: -15px;
+  padding-left: 0;
+}
+
+.clearing {
+  margin-top: 5px;
+}
+
+.modal-header {
+  border-bottom: none;
 }
 
 

@@ -5,36 +5,85 @@
 
 <div class="booyah-box col-10 offset-1">
   <% @messages.each do |message| %>
-  <div>
-
-    <!-- message.user_id  -->
-    
-      <% id = message.user_id %>
-      <% @user = User.find(id) %>
-      <% if @user.helpee.present? %>
-            <% if @user.helpee.avatar.present? %>
-               <%= image_tag @user.helpee.avatar %>
-            <% else %>
-                <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
-            <% end %>
-      <% end %>
-      <% if @user.helper.present? %>
-           <% if @user.helper.avatar.present? %>
-                <%= image_tag @user.helper.avatar %>
-           <% else %>
-                <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
-           <% end %>
-     <% end %>
-
-    <strong class="inline-space on-hover" data-toggle="modal" data-target="#myModal">
-      
-    <%= message.email %>
   
-    </strong><%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %></div>
+    <div class="row">
+      <div class="col-1">
+        <% id = message.user_id %>
+        <% user = User.find(id) %>
+        <% if user.helpee.present? %>
+          <% if user.helpee.avatar.present? %>
+            <%= image_tag user.helpee.avatar %>
+          <% else %>
+            <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
+          <% end %>
+        <% end %>
+        <% if user.helper.present? %>
+          <% if user.helper.avatar.present? %>
+            <%= image_tag user.helper.avatar %>
+          <% else %>
+            <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-11 no-margin">
+        <strong class="inline-space on-hover" data-toggle="modal" data-target="#myModal">
+          <%= message.email %>
+        </strong>
+        <%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+        <br />
+        <%= message.body %>
+        <div class="clearing"></div>
+
+      </div>
+    </div>
+  
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="chat-name" id="myModalLabel"><%= user.email %></h4>
+      </div>
+
     
-    <%= message.body %>
-  <% end %>
+      <div class="modal-body">
+        
+
+            <div>
+              
+              
+              
+              <% if user.helpee.present? %>
+                <% if user.helpee.avatar.present? %>
+                  <%= image_tag user.helpee.avatar %>
+                <% else %>
+                  <%= image_tag "fillerProfile.jpg", class: "resize-filler" %>
+                <% end %>
+              <% end %>
+              <% if user.helper.present? %>
+                <% if user.helper.avatar.present? %>
+                  <%= image_tag user.helper.avatar %>
+                <% else %>
+                  <%= image_tag "fillerProfile.jpg", class: "resize-filler" %>
+                <% end %>
+              <% end %>
+
+            </div>
+
+            
+
+          
+      </div>
+    
+    </div>
+  </div>
 </div>
+
+<% end %>
 </div>
 
 <hr class="col-10 offset-1" />
@@ -81,33 +130,3 @@
   });
 </script>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h4 id="myModalLabel">Create A Profile</h4>
-      </div>
-
-    
-      <div class="modal-body">
-        <div class="container">
-          <div class="row">
-
-            <div class='col-5 offset-1 text-center'>
-              
-            </div>
-
-            <div class='col-5 offset-1 text-center'> 
-              <%= link_to("Get Help", new_helpee_path, class: "btn btn-primary different-color-button btn-lg") %>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    
-    </div>
-  </div>
-</div>

@@ -7,6 +7,7 @@
   <% @messages.each do |message| %>
   <div>
     <strong class="inline-space"><%= current_user.email %></strong><%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %></div>
+    
     <%= message.body %>
   <% end %>
 </div>

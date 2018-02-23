@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    Message.create(message_params)
+    Message.create(message_params.merge({user_id: current_user.id}))
     redirect_to messages_path
   end
 

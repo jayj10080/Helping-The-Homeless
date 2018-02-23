@@ -6,8 +6,30 @@
 <div class="booyah-box col-10 offset-1">
   <% @messages.each do |message| %>
   <div>
-    <strong class="inline-space"><%= link_to message.email, conversations_path(sender_id: current_user.id, 
-    recipient_id: message.user_id), method: 'post' %>
+
+    <!-- message.user_id  -->
+    
+      <% id = message.user_id %>
+      <% @user = User.find(id) %>
+      <% if @user.helpee.present? %>
+            <% if @user.helpee.avatar.present? %>
+               <%= image_tag @user.helpee.avatar %>
+            <% else %>
+                <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
+            <% end %>
+      <% end %>
+      <% if @user.helper.present? %>
+           <% if @user.helper.avatar.present? %>
+                <%= image_tag @user.helper.avatar %>
+           <% else %>
+                <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
+           <% end %>
+     <% end %>
+
+    <strong class="inline-space on-hover" data-toggle="modal" data-target="#myModal">
+      
+    <%= message.email %>
+  
     </strong><%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %></div>
     
     <%= message.body %>
@@ -58,3 +80,34 @@
     }
   });
 </script>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 id="myModalLabel">Create A Profile</h4>
+      </div>
+
+    
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+
+            <div class='col-5 offset-1 text-center'>
+              
+            </div>
+
+            <div class='col-5 offset-1 text-center'> 
+              <%= link_to("Get Help", new_helpee_path, class: "btn btn-primary different-color-button btn-lg") %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>

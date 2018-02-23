@@ -366,6 +366,18 @@ li.resize-li {
   width: 250px;
 }
 
+.on-hover {
+  color: blue;
+  cursor:pointer;
+}
+
+.chat-pic {
+  width: 50px;
+  height: auto;
+}
+
+
+
 
 
 
@@ -469,7 +481,8 @@ li.resize-li {
     </div>*/
 
 
-
+/*<%= link_to message.email, conversations_path(sender_id: current_user.id, 
+    recipient_id: message.user_id), method: 'post' %>*/
 
 
 

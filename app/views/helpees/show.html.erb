@@ -1,12 +1,16 @@
 
 <div class="booyah-box col-10 offset-1">
-  
+  <% if @helpee.avatar.present? %>
     <%= image_tag @helpee.avatar, class: "left" %>
-    <h1><%= @helpee.name %></h1>
-    <% if current_user && current_user == @helpee.user %>
-        <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary right button-top' %>
-      <% end %>
-    <br />
+  <% else %>
+    <%= image_tag "fillerProfile.jpg", class: "left resize-filler" %>
+  <% end %>
+
+  <h1><%= @helpee.name %></h1>
+  <% if current_user && current_user == @helpee.user %>
+    <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary right button-top' %>
+  <% end %>
+   <br />
     
   
   <h3 class="underline-words">About Me</h3>
@@ -16,6 +20,11 @@
     <p><%= @helpee.story %></p>
     <h3 class="underline-words">What I need</h3>
     <p><%= @helpee.need %></p>
+
+    <% if current_user != @helpee.user %>
+      <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @helpee.user_id), 
+      method: 'post', class: "btn btn-primary float-left" %>
+    <% end %>
 
     <div class="float-right">
     <% if current_user && current_user == @helpee.user %>

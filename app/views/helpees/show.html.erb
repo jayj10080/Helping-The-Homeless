@@ -1,4 +1,4 @@
-<div class="booyah-box col-10 offset-1">
+<div class="booyah-box col-10 offset-1 taller">
   <% if @helpee.avatar.present? %>
     <%= image_tag @helpee.avatar, class: "left" %>
   <% else %>
@@ -23,10 +23,10 @@
 
   <% if current_user != @helpee.user %>
     <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @helpee.user_id), 
-    method: 'post', class: "btn btn-primary float-left" %>
+    method: 'post', class: "btn btn-primary float-left buttons-right" %>
   <% end %>
 
-  <div class="float-right">
+  <div class="float-right buttons-right">
     <% if current_user && current_user == @helpee.user %>
       <%= link_to 'Edit Profile', edit_helpee_path(@helpee), class: 'btn btn-primary' %>
       <%= link_to 'Delete Profile', helpee_path(@helpee), method: :delete, data: 

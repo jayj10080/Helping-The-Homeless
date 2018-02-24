@@ -24,7 +24,7 @@
 
   <% if current_user != @helper.user %>
     <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @helper.user_id), 
-    method: 'post', class: "btn btn-primary float-left" %>
+    method: 'post', class: "btn btn-primary float-left buttons-right" %>
   <% end %>
 
     <div class="float-right buttons-right">

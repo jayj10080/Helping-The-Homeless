@@ -88,10 +88,6 @@ body {
   padding-right: 27%;
 }
 
-.mission {
-  
-}
-
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
@@ -101,10 +97,8 @@ h1, h2, h3, h4, h5, h6 {
   clear: both;
 }
 
-
-
 .mission-statement {
-  margin-top: 640px;
+  
 }
 
 .underline-words {
@@ -302,22 +296,71 @@ li.resize-li {
   margin-top: -40px;
 }
 
-#banner {
-  /*<%= image_tag "img1.jpg", class: 'img-fluid hero' %>*/
-  background-image: image-url("img1.jpg");
+.banner {
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 700px;
 }
 
+#banner1 {
+  background-image: image-url("img1.jpg");
+}
+
 #banner2 {
-  /*<%= image_tag "img2.jpg", class: 'img-fluid hero' %>*/
   background-image: image-url("img2.jpg");
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 700px;
+}
+
+#banner3 {
+  background-image: image-url("img3.jpg");
+}
+
+#banner4 {
+  background-image: image-url("img4.jpg");
+}
+
+#banner5 {
+  background-image: image-url("img5.jpg");
+}
+
+#banner6 {
+  background-image: image-url("img6.jpg");
+}
+
+#banner7 {
+  background-image: image-url("img7.jpg");
+}
+
+#banner8 {
+  background-image: image-url("img8.jpg");
+}
+
+#banner9 {
+  background-image: image-url("img9.jpg");
+}
+
+#banner10 {
+  background-image: image-url("img10.jpg");
+}
+
+#banner11 {
+  background-image: image-url("img11.jpg");
+}
+
+#banner12 {
+  background-image: image-url("img12.jpg");
+}
+
+#banner13 {
+  background-image: image-url("img13.jpg");
+}
+
+#banner14 {
+  background-image: image-url("img14.jpg");
+}
+
+#banner15 {
+  background-image: image-url("img15.jpg");
 }
 
 .testing {
@@ -364,6 +407,14 @@ li.resize-li {
 .resize-filler {
   height: 250px;
   width: 250px;
+  display: block;
+  margin: 0 auto;
+}
+
+.resize-filler1 {
+  height: 250px;
+  width: 250px;
+  display: block;
 }
 
 .on-hover {
@@ -390,10 +441,49 @@ li.resize-li {
   border-bottom: none;
 }
 
+@media only screen and (max-width: 900px) { 
+    .testing {
+    top: 16em;
+  }
+}
 
+@media only screen and (max-width: 465px) { 
+    .testing {
+    top: 14em;
+  }
+}
 
+@media only screen and (max-width: 320px) { 
+    .testing {
+    top: 12em;
+  }
+}
 
+@media only screen and (max-width: 700px) { 
+    .img-button {
+    right: 37%;
+  }
+}
 
+@media only screen and (max-width: 400px) { 
+    .img-button {
+    right: 29%;
+  }
+}
+
+.margin-notice {
+  margin-bottom: 0;
+}
+
+.buttons-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  margin-right: 20px;
+}
+
+    
 
 
 

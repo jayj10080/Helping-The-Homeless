@@ -39,26 +39,24 @@
       <br />
 
       <% if @helpee.present? %>
-        <div class="booyah-box2">
-          <div class="row">
-            <% @helpee.each do |helpee| %>
+        <% @helpee.each do |helpee| %>
+          <div class="booyah-box2">
+            <div class="row">
               <div class="col-6">
                 <% if helpee.avatar.present? %>
                   <%= image_tag helpee.avatar, class: "image-index" %>
                 <% else %>
-                  <%= image_tag "fillerProfile.jpg" %>
+                  <%= image_tag "fillerProfile.jpg", class: "image-index" %>
                 <% end %>
               </div>
               <div class="col-6 index-name">
                 <h1 class="index-text"><%= link_to helpee.name, helpee_path(helpee) %></h1>
               </div>
-            <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-
     </div>
-
   </div>
 </div>
 

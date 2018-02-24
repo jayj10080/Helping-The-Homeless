@@ -9,107 +9,91 @@
 
     <script src="//code.jboxcdn.com/0.4.9/jBox.min.js"></script>
     <link href="//code.jboxcdn.com/0.4.9/jBox.css" rel="stylesheet">
-    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
 
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <%= link_to 'Helping The Homeless', root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" 
+      data-target="#navbarTogglerDemo02" aria-controls=" navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'Helping The Homeless', root_path, class: 'navbar-brand' %>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-      <li class="nav-item">
-        <%= link_to 'Our Members', places_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Where to get help', resources_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+        <li class="nav-item">
+          <%= link_to 'Our Members', places_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Where to get help', resources_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
           <%= link_to 'Chat', messages_path, class: 'nav-link' %>
         </li>
-    </ul>
-    <ul class="navbar-nav">
-      <% if user_signed_in? %>
-        <% if current_user.helpee %>
+      </ul>
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <% if current_user.helpee %>
+            <li class="nav-item">
+              <%= link_to helpee_path(current_user.helpee), class: 'nav-link' do %>
+                My Profile
+              <% end %>
+            </li>
+            <% if current_user.all_unread_direct_messages > 0 %>
+              <li class="nav-item resize-li tooltip" title="You have <%= current_user.all_unread_direct_messages %> unread messages">
+                <a href="conversations"><i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" style="padding-left: 0;"></i></a>
+
+              </li>
+            <% end %>
+          <% end %>
+
+          <% if current_user.helper %>
+            <li class="nav-item li-padding">
+              <%= link_to helper_path(current_user.helper), class: 'nav-link' do %>
+                <!-- <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
+                title="You have unread messages"></i> -->
+                My Profile
+              <% end %>
+            </li>
+
+            <% if current_user.all_unread_direct_messages > 0 %>
+              <li class="nav-item resize-li tooltip" title="You have <%= current_user.all_unread_direct_messages %> unread messages">
+                <a href="conversations"><i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" style="padding-left: 0;"></i></a>
+              </li>
+            <% end %>
+          <% end %>
+          
           <li class="nav-item">
-            <%= link_to helpee_path(current_user.helpee), class: 'nav-link' do %>
-              <!-- <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-              title="You have unread messages" data-animation=""></i> -->
-              My Profile
-            <% end %>
-            <!-- <a href="#">
-            <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-            title="You have unread messages"></i>
-            </a> -->
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
           </li>
-          <% if current_user.all_unread_direct_messages > 0 %>
-            <li class="nav-item resize-li tooltip" title="You have unread messages">
-              <i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-              title="You have unread messages" style="padding-left: 0;"></i>
-            </li>
-          <% end %>
-        <% end %>
-
-        <% if current_user.helper %>
-          <li class="nav-item li-padding">
-            <%= link_to helper_path(current_user.helper), class: 'nav-link' do %>
-              <!-- <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-              title="You have unread messages"></i> -->
-              My Profile
-            <% end %>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
           </li>
-          <% if current_user.all_unread_direct_messages > 0 %>
-            <li class="nav-item resize-li tooltip" title="You have unread messages">
-              <i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-              title="You have unread messages" style="padding-left: 0;"></i>
-            </li>
-          <% end %>
-          <!-- code pen option css already present -->
-          <!-- <li class="nav-item tooltip fade" data-title="Message">
-            <i class="fa fa-envelope nav-link resize-icon"></i>
-          </li> -->
-
-          <!-- option using jbox js present on page and in header -->
-          <!-- <li class="nav-item tooltip" title="My tooltip">
-          <i class="fa fa-envelope nav-link resize-icon"></i>
-          </li> -->
+          <li class="nav-item">
+            <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
+          </li>
         <% end %>
-        <li class="nav-item">
-          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+      </ul>
+    </div>
+  </nav>
 
-<script type="text/javascript">
-new jBox('Tooltip', {
-  attach: '.tooltip'
-});
-</script>
+  <script type="text/javascript">
+  new jBox('Tooltip', {
+    attach: '.tooltip'
+  });
+  </script>
 
-<% if current_user %>
-  <%= current_user.all_unread_direct_messages %>
-<% end %>
-
-    <% if notice.present? %>
-      <p class="alert alert-info"><%= notice %></p>
-    <% end %>
-    <% if alert.present? %>
-      <p class="alert alert_danger"><%= alert %></p>
-    <% end %>
-    <%= yield %>
+  <% if notice.present? %>
+    <p class="alert alert-info margin-notice"><%= notice %></p>
+  <% end %>
+  <% if alert.present? %>
+    <p class="alert alert_danger margin-notice"><%= alert %></p>
+  <% end %>
+  <%= yield %>
   </body>
 </html>
 

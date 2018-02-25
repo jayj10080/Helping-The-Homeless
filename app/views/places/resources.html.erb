@@ -53,6 +53,22 @@
   <p>Free clothing bank, 9.30-10.30am Thursdays.</p>
 </div>
 
+<div class="booyah-box col-10 offset-1" id="clickthis">
+  <%= image_tag "HOH.jpg", class: 'img-fluid left' %>
+  <h1>Harvest of Hope Food Pantry</h1>
+  <span id="marker6" class="markerclass on-hover">see map</span>
+  <h3 class="underline-words">About</h3>
+  <p>Food pantry.</p>
+</div>
+
+<div class="booyah-box col-10 offset-1">
+<h1>More Resources</h1>
+<%= link_to "Community Resources", "https://bouldershelter.org/get-help/community-resources/" %>
+<br />
+<%= link_to "Resource Pamphlet", "https://bouldershelter.org/wp-content/uploads/2018/01/BSH-January-2018-Resource-Pamphlet.pdf" %>
+</div>
+
+
 <script>
   var marker = [];
 
@@ -124,6 +140,19 @@
            content: '<p><a href="https://www.fpcboulder.org/deacons">'+
               '<b class="underline-words">Deacon’s Closet</b></a> ' + '<br />' + 'Address: 1603 Walnut Street, Boulder, CO 80302' + '<br/>' +
               '(303) 402-6400' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + 'Thursday 9:30AM–10:30AM' + '</p>'
+        }),
+
+        new google.maps.Marker({
+          position: {lat: 40.028736, lng: -105.254545},
+          map: map,
+          title: 'Harvest of Hope Food Pantry',
+           content: '<p><a href="http://hopepantry.org/">'+
+              '<b class="underline-words">Harvest of Hope Food Pantry</b></a> ' + '<br />' + 'Address: 2960 Valmont Road, Boulder, CO 80302' 
+              + '<br/>' +'(720) 382-1971' +'</p>' + '<p>' + '<b class="underline-words">Hours</b>' + '<br/>' + 'Monday 9AM–11AM, 12PM-2PM' 
+              + '<br />' 
+              + 'Tuesday 9AM–11AM, 12PM-2PM' + '<br />' + 'Wednesday 9AM–11AM, 12PM-2PM' + '<br />' + 'Thursday 9AM–11AM, 12PM-2PM' +
+               '<br />' + 'Friday 9AM–11AM, 12PM-2PM' + '<br />' +
+              'Saturday CLOSED' + '<br />' + 'Sunday CLOSED' + '</p>'
         })
 
       ];      

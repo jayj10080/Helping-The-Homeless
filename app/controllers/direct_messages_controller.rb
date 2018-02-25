@@ -4,7 +4,7 @@ class DirectMessagesController < ApplicationController
   end
 def index
   # @conversation.direct_messages.order(id: :asc)
- @messages = @conversation.direct_messages
+ @messages = @conversation.direct_messages.order(id: :asc)
   if @messages.length > 10
    @over_ten = true
    @messages = @messages[-10..-1]

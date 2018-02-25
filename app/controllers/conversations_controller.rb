@@ -1,8 +1,12 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
 def index
+ if current_user.helpee.present? || current_user.helper.present?
  @users = User.all
  @conversations = Conversation.all
+ else 
+  return render plain: 'You need to create a profile first.', status: :forbidden
+end
  end
 
  def update
@@ -15,13 +19,17 @@ def create
     @conversation = Conversation.between(params[:sender_id],
      params[:recipient_id]).first
  else
-
-  # if Conversation.recipient_id == User.helpee.user_id || Conversation.recipient_id == User.helper.user_id
   @conversation = Conversation.create!(conversation_params)
-
- end
+end
  redirect_to conversation_direct_messages_path(@conversation)
 end
+
+def destroy
+@conversation = Conversation.find(params[:id])
+@conversation.destroy
+    redirect_to conversations_path
+  end
+
 private
  def conversation_params
   params.permit(:sender_id, :recipient_id)

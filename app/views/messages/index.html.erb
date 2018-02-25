@@ -7,7 +7,7 @@
   <% @messages.each do |message| %>
   
     <div class="row">
-      <div class="col-1">
+      <div class="float-left">
         <% id = message.user_id %>
         <% user = User.find(id) %>
         <% if user.helpee.present? %>
@@ -25,7 +25,7 @@
           <% end %>
         <% end %>
       </div>
-      <div class="col-11 no-margin">
+      <div class="text-left">
         <% if current_user.id != message.user_id %>
         <strong class="inline-space on-hover" data-toggle="modal" data-target="#myModal">
           <% if user.helpee.present? %>

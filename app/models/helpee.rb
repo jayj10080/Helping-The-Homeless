@@ -4,5 +4,5 @@ class Helpee < ApplicationRecord
   after_validation :geocode
   mount_uploader :avatar, AvatarUploader
 
-  validates :name, presence: true, length: { minimum: 3 }
+  validates :name, presence: true, length: { minimum: 3 }, uniqueness: true
 end

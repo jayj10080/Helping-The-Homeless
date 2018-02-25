@@ -56,6 +56,8 @@ class HelpeesController < ApplicationController
     @helpee.user = @user
     @helpee.save
 
+    
+
     if @helpee.valid?
       redirect_to places_path
     else

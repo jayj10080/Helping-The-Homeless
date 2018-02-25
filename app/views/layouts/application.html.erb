@@ -36,33 +36,37 @@
       </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <% if current_user.helpee %>
-            <li class="nav-item">
-              <%= link_to helpee_path(current_user.helpee), class: 'nav-link' do %>
-                My Profile
-              <% end %>
-            </li>
-            <% if current_user.all_unread_direct_messages > 0 %>
-              <li class="nav-item resize-li tooltip" title="You have <%= current_user.all_unread_direct_messages %> unread messages">
-                <a href="conversations"><i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" style="padding-left: 0;"></i></a>
-
+          <% if current_user.helpee.present? %>
+            <% if current_user.helpee.id != nil %>
+              <li class="nav-item">
+                <%= link_to helpee_path(current_user.helpee), class: 'nav-link' do %>
+                  My Profile
+                <% end %>
               </li>
+              <% if current_user.all_unread_direct_messages > 0 %>
+                <li class="nav-item resize-li tooltip" title="You have <%= current_user.all_unread_direct_messages %> unread messages">
+                  <a href="conversations"><i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" style="padding-left: 0;"></i></a>
+
+                </li>
+              <% end %>
             <% end %>
           <% end %>
 
-          <% if current_user.helper %>
-            <li class="nav-item li-padding">
-              <%= link_to helper_path(current_user.helper), class: 'nav-link' do %>
-                <!-- <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-                title="You have unread messages"></i> -->
-                My Profile
-              <% end %>
-            </li>
-
-            <% if current_user.all_unread_direct_messages > 0 %>
-              <li class="nav-item resize-li tooltip" title="You have <%= current_user.all_unread_direct_messages %> unread messages">
-                <a href="conversations"><i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" style="padding-left: 0;"></i></a>
+          <% if current_user.helper.present? %>
+            <% if current_user.helper.id != nil %>
+              <li class="nav-item li-padding">
+                <%= link_to helper_path(current_user.helper), class: 'nav-link' do %>
+                  <!-- <i class="fa fa-envelope" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
+                  title="You have unread messages"></i> -->
+                  My Profile
+                <% end %>
               </li>
+
+              <% if current_user.all_unread_direct_messages > 0 %>
+                <li class="nav-item resize-li tooltip" title="You have <%= current_user.all_unread_direct_messages %> unread messages">
+                  <a href="conversations"><i class="fa fa-envelope nav-link resize-icon" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" style="padding-left: 0;"></i></a>
+                </li>
+              <% end %>
             <% end %>
           <% end %>
           

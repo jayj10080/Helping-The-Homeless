@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :places, only: [:index]
   resources :helpers
   resources :helpees
-  resources :messages, only: [:index, :create]
+  resources :messages, only: [:index, :create, :destroy]
   resources :conversations do
     resources :direct_messages
   end

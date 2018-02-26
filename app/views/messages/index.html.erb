@@ -3,6 +3,7 @@
 <br />
 
 
+
 <div class="booyah-box col-10 offset-1">
   <% @messages.each do |message| %>
   
@@ -125,8 +126,6 @@
 <br />
 <br />
 
-
-
 <script type="text/javascript">
   var clicked = $(".clicked-name")
   clicked.click(function(data) {
@@ -166,4 +165,8 @@
     }
   });
 </script>
+
+<h1>HI</h1>
+<h1><%= @messages.length%></h1>
+
 

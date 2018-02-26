@@ -43,7 +43,7 @@
     
       &nbsp<%= current_user.all_unread_conversation_messages(conversation) %> <span>Unread Messages</span>&nbsp
       <%= link_to 'Delete Conversation', conversation_path(conversation), method: :delete, data: 
-      {confirm: 'Are you sure you want to delete this conversation?'} %>
+      {confirm: 'Are you sure you want to delete this conversation?'}, class: "add-height" %>
     </div>
     </div>
        <br />
@@ -64,16 +64,16 @@
       <div class="float-left">
         <% if user.helpee.present? %>
           <% if user.helpee.avatar.present? %>
-            <%= image_tag user.helpee.avatar, class: "chat-pic convo-pic" %>
+            <%= image_tag user.helpee.avatar, class: "chat-pic convo-pic user-pic" %>
           <% else %>
-            <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic" %>
+            <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic user-pic" %>
           <% end %>
         <% end %>
         <% if user.helper.present? %>
           <% if user.helper.avatar.present? %>
-            <%= image_tag user.helper.avatar, class: "chat-pic convo-pic" %>
+            <%= image_tag user.helper.avatar, class: "chat-pic convo-pic user-pic" %>
           <% else %>
-            <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic" %>
+            <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic user-pic" %>
           <% end %>
         <% end %>
       </div>

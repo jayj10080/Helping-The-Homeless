@@ -27,7 +27,7 @@
       </div>
       <div class="text-left">
         <% if current_user.id != message.user_id %>
-        <strong class="inline-space on-hover" data-toggle="modal" data-target="#myModal">
+        <strong class="inline-space on-hover clicked-name" data-toggle="modal" data-target="#myModal">
           <% if user.helpee.present? %>
           <%= user.helpee.name %>
           <% end %>
@@ -74,6 +74,7 @@
       
       <div class="modal-body">
         <div>
+
               <% if user.helpee.present? %>
                 <% if user.helpee.avatar.present? %>
                   <%= image_tag user.helpee.avatar %>
@@ -123,6 +124,16 @@
 </div>
 <br />
 <br />
+
+
+
+<script type="text/javascript">
+  var clicked = $(".clicked-name")
+  clicked.click(function(data) {
+    var detail = data
+    console.log(detail);
+  })
+</script>
 
 <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
 <script>

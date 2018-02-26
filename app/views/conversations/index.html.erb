@@ -1,52 +1,47 @@
 <div class="booyah-box col-10 offset-1">
  <h3 class="mailbox">Mailbox</h3>
-
  <div>
   <div class="line-height">
    <% @conversations.each do |conversation| %>
    <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
     <% if conversation.sender_id == current_user.id %>
       <% recipient = User.find(conversation.recipient_id) %>
+      
     <% else %>
       <% recipient = User.find(conversation.sender_id) %>
     <% end %>
-      
-      <div class="row">
-        <div class="float-left">
-        <% id = conversation.recipient_id %>
-        <% user = User.find(id) %>
-        <% if user.helpee.present? %>
-          <% if user.helpee.avatar.present? %>
-            <%= image_tag user.helpee.avatar, class: "chat-pic convo-pic" %>
+
+    <div class="row">
+      <div class="float-left">
+        <% if recipient.helpee.present? %>
+          <% if recipient.helpee.avatar.present? %>
+            <%= image_tag recipient.helpee.avatar, class: "chat-pic convo-pic" %>
           <% else %>
             <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic" %>
           <% end %>
         <% end %>
-        <% if user.helper.present? %>
-          <% if user.helper.avatar.present? %>
-            <%= image_tag user.helper.avatar, class: "chat-pic convo-pic" %>
+        <% if recipient.helper.present? %>
+          <% if recipient.helper.avatar.present? %>
+            <%= image_tag recipient.helper.avatar, class: "chat-pic convo-pic" %>
           <% else %>
             <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic" %>
           <% end %>
         <% end %>
       </div>
-    <div class="text-left conversation-text">
-      <% if user.helpee.present? %>
-          <%= link_to user.helpee.name, conversation_direct_messages_path(conversation)  %>
-          <% end %>
-          <% if user.helper.present? %>
-          <%= link_to user.helper.name, conversation_direct_messages_path(conversation)  %>
-          <% end %>
+      <div class="text-left conversation-text">
+        <% if recipient.helpee.present? %>
+          <%= link_to recipient.helpee.name, conversation_direct_messages_path(conversation)  %>
+        <% end %>
+        <% if recipient.helper.present? %>
+          <%= link_to recipient.helper.name, conversation_direct_messages_path(conversation)  %>
+        <% end %>
       
-
-
-    
-      &nbsp<%= current_user.all_unread_conversation_messages(conversation) %> <span>Unread Messages</span>&nbsp
-      <%= link_to 'Delete Conversation', conversation_path(conversation), method: :delete, data: 
-      {confirm: 'Are you sure you want to delete this conversation?'}, class: "add-height" %>
+        &nbsp<%= current_user.all_unread_conversation_messages(conversation) %> <span>Unread Messages</span>&nbsp
+        <%= link_to 'Delete Conversation', conversation_path(conversation), method: :delete, data: 
+        {confirm: 'Are you sure you want to delete this conversation?'}, class: "add-height" %>
+      </div>
     </div>
-    </div>
-       <br />
+    <br />
    <% end %>
   <% end %>
   </div>

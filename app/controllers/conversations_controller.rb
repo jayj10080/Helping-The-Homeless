@@ -1,5 +1,6 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
+  after_filter :destroy_conversation
 def index
  if current_user.helpee.present? || current_user.helper.present?
  @users = User.all
@@ -31,6 +32,19 @@ def destroy
 end
 
 private
+
+  def destroy_conversation
+    @conversations = Conversation.all
+
+
+    # @conversations.each do |x|
+      
+
+      
+      
+    # end
+  end
+
  def conversation_params
   params.permit(:sender_id, :recipient_id)
  end

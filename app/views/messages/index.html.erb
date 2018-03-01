@@ -2,8 +2,6 @@
 <h1 class="underline-words text-center">Chat Room</h1>
 <br />
 
-
-
 <div class="booyah-box col-10 offset-1">
   <% @messages.each do |message| %>
   
@@ -17,65 +15,69 @@
           <% else %>
             <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
           <% end %>
-        <% end %>
-        <% if user.helper.present? %>
+        
+        <% elsif user.helper.present? %>
           <% if user.helper.avatar.present? %>
             <%= image_tag user.helper.avatar, class: "chat-pic" %>
           <% else %>
             <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
           <% end %>
+        <% else %>
+          <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
         <% end %>
       </div>
       <div class="text-left">
         <% if current_user.id != message.user_id %>
-        <strong class="inline-space on-hover clicked-name" data-toggle="modal" data-target="#myModal">
-          <% if user.helpee.present? %>
-          <%= user.helpee.name %>
+          <strong class="inline-space on-hover clicked-name" data-user-id="<%= message.user_id %>">
+            <% if user.helpee.present? %>
+              <%= user.helpee.name %>
+            <% end %>
+            <% if user.helper.present? %>
+              <%= user.helper.name %>
+            <% end %>
+          </strong>
+          <strong class="inline-space filler-left">
+          <% if !(user.helpee.present?) && !(user.helper.present?) %>
+            Profile-Deleted
           <% end %>
-          <% if user.helper.present? %>
-          <%= user.helper.name %>
-          <% end %>
-        </strong>
+          </strong>
+
         <% else %>
-        <strong class="inline-space">
+          <strong class="inline-space">
           <% if user.helpee.present? %>
-          <%= user.helpee.name %>
+            <%= user.helpee.name %>
           <% end %>
           <% if user.helper.present? %>
-          <%= user.helper.name %>
+            <%= user.helper.name %>
           <% end %>
-        </strong>
+          </strong>
         <% end %>
         <%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %>
         <br />
         <%= message.body %>
         <div class="clearing"></div>
-
       </div>
     </div>
   
-
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header1">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-        <% if user.helpee.present? %>
-          <h4 id=""><%= user.helpee.name %></h4>
-          <% end %>
-          <% if user.helper.present? %>
-          <h4 id=""><%= user.helper.name %></h4>
-          <% end %>
-        
-
-      </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header1">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <% id = message.user_id %>
+            <% user = User.find(id) %>
+            <% if user.helpee.present? %>
+              <h4 id="h4Id"><%= user.helpee.name %></h4>
+            <% end %>
+            <% if user.helper.present? %>
+              <h4 id="h4Id"><%= user.helper.name %></h4>
+            <% end %>
+          </div>
       
-      <div class="modal-body">
-        <div>
-
+          <div class="modal-body">
+            <div>
               <% if user.helpee.present? %>
                 <% if user.helpee.avatar.present? %>
                   <%= image_tag user.helpee.avatar %>
@@ -90,7 +92,6 @@
                   <%= image_tag "fillerProfile.jpg", class: "resize-filler" %>
                 <% end %>
               <% end %>
-
             </div>
             
             <div class="text-center">
@@ -104,24 +105,20 @@
                 <%= link_to "See #{user.helper.name}'s Profile", helper_path(user.helper.id) %>
               <% end %>
             </div>
-          
+          </div>
+        </div>
       </div>
-    
     </div>
-  </div>
-</div>
-
-<% end %>
+  <% end %>
 </div>
 
 <hr class="col-10 offset-1" />
 
 <div class="col-10 offset-1 text-insert">
-<%= simple_form_for @message do |f| %>
-  <%= f.input :body %>
-
-  <%= f.submit "Chat!", class: "btn btn-primary" %>
-<% end %>
+  <%= simple_form_for @message do |f| %>
+    <%= f.input :body %>
+    <%= f.submit "Chat!", class: "btn btn-primary" %>
+  <% end %>
 </div>
 <br />
 <br />
@@ -129,9 +126,15 @@
 <script type="text/javascript">
   var clicked = $(".clicked-name")
   clicked.click(function(data) {
-    var detail = data
-    console.log(detail);
-  })
+  userId = data.currentTarget.getAttribute('data-user-id');
+  console.log(userId);
+  // var user = User.find(userId);
+  // $(".modal-body #h4Id").text('');
+  $('#myModal').modal('toggle');
+  // // var mymodal = $('#myModal');
+  // // mymodal.find('.bookId').text('hello');
+  // // mymodal.modal('show');
+})
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>

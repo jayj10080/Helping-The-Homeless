@@ -46,6 +46,9 @@ class HelpeesController < ApplicationController
     if @helpee.user != current_user
       return render plain: 'Not Allowed', status: :forbidden
     end
+
+    # @user = User.find(@helpee.user_id)
+    # @user.conversations_as_sender.destroy
     @helpee.destroy
     redirect_to root_path
   end

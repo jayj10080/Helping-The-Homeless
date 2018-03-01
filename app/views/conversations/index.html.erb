@@ -3,7 +3,7 @@
  <div>
   <div class="line-height">
    <% @conversations.each do |conversation| %>
-   <% if conversation.sender_id == current_user.id ||      conversation.recipient_id == current_user.id %>
+   <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
     <% if conversation.sender_id == current_user.id %>
       <% recipient = User.find(conversation.recipient_id) %>
       
@@ -19,22 +19,30 @@
           <% else %>
             <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic" %>
           <% end %>
-        <% end %>
-        <% if recipient.helper.present? %>
+        <% elsif recipient.helper.present? %>
           <% if recipient.helper.avatar.present? %>
             <%= image_tag recipient.helper.avatar, class: "chat-pic convo-pic" %>
           <% else %>
             <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic" %>
           <% end %>
+        <% else %>
+          <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic" %>
         <% end %>
       </div>
       <div class="text-left conversation-text">
-        <% if recipient.helpee.present? %>
-          <%= link_to recipient.helpee.name, conversation_direct_messages_path(conversation)  %>
-        <% end %>
-        <% if recipient.helper.present? %>
-          <%= link_to recipient.helper.name, conversation_direct_messages_path(conversation)  %>
-        <% end %>
+        <strong class="inline-space">
+          <% if recipient.helpee.present? %>
+            <%= link_to recipient.helpee.name, conversation_direct_messages_path(conversation)  %>
+          <% end %>
+          <% if recipient.helper.present? %>
+            <%= link_to recipient.helper.name, conversation_direct_messages_path(conversation)  %>
+          <% end %>
+        </strong>
+        <strong class="inline-space filler-left">
+          <% if !(recipient.helpee.present?) && !(recipient.helper.present?) %>
+            <%= link_to "Profile Deleted", conversation_direct_messages_path(conversation)  %>
+          <% end %>
+        </strong>
       
         &nbsp<%= current_user.all_unread_conversation_messages(conversation) %> <span>Unread Messages</span>&nbsp
         <%= link_to 'Delete Conversation', conversation_path(conversation), method: :delete, data: 
@@ -75,12 +83,14 @@
 
 
         <div class="text-left user-text">
-        <% if user.helpee.present? %>
-          <%= link_to user.helpee.name, helpee_path(user.helpee) %>&nbsp <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-          <% end %>
-          <% if user.helper.present? %>
-          <%= link_to user.helper.name, helper_path(user.helper) %>&nbsp <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-          <% end %>
+          <strong class="inline-space">
+            <% if user.helpee.present? %>
+              <%= link_to user.helpee.name, helpee_path(user.helpee) %>&nbsp <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+              <% end %>
+              <% if user.helper.present? %>
+              <%= link_to user.helper.name, helper_path(user.helper) %>&nbsp <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+            <% end %>
+          </strong>
         </div>
         
       </div>

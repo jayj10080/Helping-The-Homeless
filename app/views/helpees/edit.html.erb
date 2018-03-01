@@ -8,6 +8,7 @@
     <%= f.input :need %>
     <%= f.input :address %>
     <%= f.input :avatar %>
+    <%= f.input :notifications, as: :boolean, checked_value: true, unchecked_value: false, label: 'Receive email notifications?' %>
     <br />
     <%= f.submit 'Update', class: 'btn btn-primary' %>
   <% end %>

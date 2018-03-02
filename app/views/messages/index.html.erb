@@ -59,7 +59,7 @@
       </div>
     </div>
   
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade <%= "myModal-#{message.user_id}" %> modalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header1">
@@ -126,15 +126,16 @@
 <script type="text/javascript">
   var clicked = $(".clicked-name")
   clicked.click(function(data) {
-  userId = data.currentTarget.getAttribute('data-user-id');
-  console.log(userId);
-  // var user = User.find(userId);
-  // $(".modal-body #h4Id").text('');
-  $('#myModal').modal('toggle');
-  // // var mymodal = $('#myModal');
-  // // mymodal.find('.bookId').text('hello');
-  // // mymodal.modal('show');
-})
+    userId = data.currentTarget.getAttribute('data-user-id');
+    console.log(userId);
+    // var user = User.find(userId);
+    // $(".modal-body #h4Id").text('');
+    debugger
+    $('.myModal-' + userId).first().modal('toggle');
+    // // var mymodal = $('#myModal');
+    // // mymodal.find('.bookId').text('hello');
+    // // mymodal.modal('show');
+  })
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>

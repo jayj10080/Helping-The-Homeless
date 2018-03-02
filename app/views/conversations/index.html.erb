@@ -55,47 +55,50 @@
   </div>
  </div>
 </div>
+
 <div class="booyah-box col-10 offset-1">
- <h3 class="mailbox">All Users</h3>
+  <h3 class="mailbox">All Users</h3>
   <div>
-  <% @users.each do |user| %>
-    <% if user.id != current_user.id %>
-      <% if user.helper || user.helpee %>
-      <div class="row">
-
-        
-      <div class="float-left">
-        <% if user.helpee.present? %>
-          <% if user.helpee.avatar.present? %>
-            <%= image_tag user.helpee.avatar, class: "chat-pic convo-pic user-pic" %>
-          <% else %>
-            <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic user-pic" %>
-          <% end %>
-        <% end %>
-        <% if user.helper.present? %>
-          <% if user.helper.avatar.present? %>
-            <%= image_tag user.helper.avatar, class: "chat-pic convo-pic user-pic" %>
-          <% else %>
-            <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic user-pic" %>
-          <% end %>
-        <% end %>
-      </div>
-
-
-        <div class="text-left user-text">
-          <strong class="inline-space">
-            <% if user.helpee.present? %>
-              <%= link_to user.helpee.name, helpee_path(user.helpee) %>&nbsp <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+    <% @users.each do |user| %>
+      <% if user.id != current_user.id %>
+        <% if user.helper || user.helpee %>
+          <div class="row">
+            <div class="float-left">
+              <% if user.helpee.present? %>
+                <% if user.helpee.avatar.present? %>
+                  <%= image_tag user.helpee.avatar, class: "chat-pic convo-pic user-pic" %>
+                <% else %>
+                  <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic user-pic" %>
+                <% end %>
               <% end %>
               <% if user.helper.present? %>
-              <%= link_to user.helper.name, helper_path(user.helper) %>&nbsp <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
-            <% end %>
-          </strong>
-        </div>
-        
-      </div>
+                <% if user.helper.avatar.present? %>
+                  <%= image_tag user.helper.avatar, class: "chat-pic convo-pic user-pic" %>
+                <% else %>
+                  <%= image_tag "fillerProfile.jpg", class: "chat-pic convo-pic user-pic" %>
+                <% end %>
+              <% end %>
+            </div>
+
+            <div class="text-left user-text">
+              <% if user.helpee.present? %>
+                <strong class="inline-space">
+                  <%= link_to user.helpee.name, helpee_path(user.helpee) %>
+                </strong> 
+                &nbsp 
+                <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+              <% end %>
+              <% if user.helper.present? %>
+                <strong class="inline-space">
+                  <%= link_to user.helper.name, helper_path(user.helper) %> 
+                </strong>
+                &nbsp 
+                <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
- </div>
+  </div>
 </div>

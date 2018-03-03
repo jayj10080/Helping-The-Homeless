@@ -80,14 +80,14 @@
             <div>
               <% if user.helpee.present? %>
                 <% if user.helpee.avatar.present? %>
-                  <%= image_tag user.helpee.avatar %>
+                  <%= image_tag user.helpee.avatar, class: "resize-filler" %>
                 <% else %>
                   <%= image_tag "fillerProfile.jpg", class: "resize-filler" %>
                 <% end %>
               <% end %>
               <% if user.helper.present? %>
                 <% if user.helper.avatar.present? %>
-                  <%= image_tag user.helper.avatar %>
+                  <%= image_tag user.helper.avatar, class: "resize-filler" %>
                 <% else %>
                   <%= image_tag "fillerProfile.jpg", class: "resize-filler" %>
                 <% end %>
@@ -128,13 +128,7 @@
   clicked.click(function(data) {
     userId = data.currentTarget.getAttribute('data-user-id');
     console.log(userId);
-    // var user = User.find(userId);
-    // $(".modal-body #h4Id").text('');
-    debugger
     $('.myModal-' + userId).first().modal('toggle');
-    // // var mymodal = $('#myModal');
-    // // mymodal.find('.bookId').text('hello');
-    // // mymodal.modal('show');
   })
 </script>
 
@@ -170,7 +164,6 @@
   });
 </script>
 
-<h1>HI</h1>
-<h1><%= @messages.length%></h1>
+
 
 

@@ -48,3 +48,35 @@
   });
 });
 </script>
+
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+<script>
+  var lastMessagePageShown = <%= DirectMessage.order(:id).last.to_json.html_safe %>;
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBOl_hMGb_qqY5jnZsALk9Z2_H4hiaCTY8",
+    authDomain: "passion-chat.firebaseapp.com",
+    databaseURL: "https://passion-chat.firebaseio.com",
+    projectId: "passion-chat",
+    storageBucket: "passion-chat.appspot.com",
+    messagingSenderId: "501201445940"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  var messageRef = database.ref('directmessage');
+  console.log(messageRef);
+  messageRef.on('value', function(snapshot) {
+    // updateStarCount(postElement, snapshot.val());
+    // console.log(snapshot.val());
+    var values = snapshot.val();
+    var ids = Object.keys(values);
+    var lastId = ids[ids.length - 1];
+    var lastMessage = values[lastId];
+    console.log(lastMessage);
+    if(lastMessagePageShown.id < lastMessage.id) {
+      location.reload();
+    }
+  });
+</script>

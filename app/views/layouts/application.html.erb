@@ -44,11 +44,11 @@
                 <% end %>
               </li>
               
-                <li class="nav-item resize-li tooltip" 
-                title="You have <%= current_user.all_unread_direct_messages %> unread messages">
-                  <i class="fa fa-envelope nav-link resize-icon click-link <%= current_user.all_unread_direct_messages > 0 ? 'visible' : '' %>" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" style="padding-left: 0;"></i>
-
+              <% if current_user.all_unread_direct_messages > 0 %>
+                <li class="nav-item resize-li tooltip" title="You have <%= current_user.all_unread_direct_messages %> unread messages">
+                  <i class="fa fa-envelope nav-link resize-icon click-link" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" style="padding-left: 0;"></i>
                 </li>
+              <% end %>
               
             <% end %>
           <% end %>
@@ -65,9 +65,10 @@
 
               <% if current_user.all_unread_direct_messages > 0 %>
                 <li class="nav-item resize-li tooltip" title="You have <%= current_user.all_unread_direct_messages %> unread messages">
-                  <i class="fa fa-envelope nav-link resize-icon click-link <%= current_user.all_unread_direct_messages > 0 ? 'visible' : '' %>" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" style="padding-left: 0;"></i>
+                  <i class="fa fa-envelope nav-link resize-icon click-link" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" style="padding-left: 0;"></i>
                 </li>
               <% end %>
+              
             <% end %>
           <% end %>
           

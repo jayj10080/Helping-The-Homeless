@@ -75,6 +75,26 @@
     var lastId = ids[ids.length - 1];
     var lastMessage = values[lastId];
     console.log(lastMessage);
+    
+
+    var hasUnreadMessages = false;
+    for(var key in values)
+    {
+        if(values[key].read === false)
+        {
+            hasUnreadMessages = true;
+        }
+    }
+
+    if(hasUnreadMessages)
+    {
+      document.querySelector('.fa-envelope').classList.add('visible');  
+    }
+    else
+    {
+      document.querySelector('.fa-envelope').classList.remove('visible');
+    }
+    
     if(lastMessagePageShown.id < lastMessage.id) {
       location.reload();
     }

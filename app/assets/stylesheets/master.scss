@@ -551,6 +551,13 @@ div.modal-header1 {
   margin-right: auto;
 }
     
+.fa.fa-envelope {
+  display: none;
+}
+
+.fa.fa-envelope.visible {
+  display: block;
+}
 
 
 

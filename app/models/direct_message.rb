@@ -14,7 +14,7 @@ class DirectMessage < ActiveRecord::Base
   end
 
   def send_to_firebase2
-    FIREBASE.push("directmessage", { :id => self.id, :body => self.body, :'.priority' => 1, :timestamp => self.created_at })
+    FIREBASE.push("directmessage", { :id => self.id, :read => self.read, :body => self.body, :'.priority' => 1, :timestamp => self.created_at })
   end
 
 end

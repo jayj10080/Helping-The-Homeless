@@ -1,3 +1,4 @@
+require 'firebase'
 
 base_uri = 'https://passion-chat.firebaseio.com/'
 secret_key = ENV["FIREBASE_SECRET_KEY"]

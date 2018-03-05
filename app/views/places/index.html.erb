@@ -13,9 +13,9 @@
       <br />
 
       <% if @helper.present? %>
-        <div class="booyah-box2">
-          <div class="row">
-            <% @helper.each do |helper| %>
+        <% @helper.each do |helper| %>
+          <div class="booyah-box2">
+            <div class="row">
               <div class="col-6">
                 <% if helper.avatar.present? %>
                   <%= image_tag helper.avatar, class: "image-index" %>
@@ -26,9 +26,9 @@
               <div class="col-6 index-name">
                 <h1 class="index-text"><%= link_to helper.name, helper_path(helper) %></h1>
               </div>
-            <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
 

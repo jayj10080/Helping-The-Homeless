@@ -8,26 +8,22 @@
   <h1><%= @helper.name %></h1>
 
   <% if current_user && current_user == @helper.user %>
-      <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary float-right inbox-button' %>
+      <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary float-right inbox-button reposition-button' %>
     <% end %>
   <br />
     
-  
   <h3 class="underline-words">About Me</h3>
   <p><%= @helper.about %></p>
-  
-
   
   <h3 class="underline-words">How and why I want to help</h3>
   <p><%= @helper.how %></p>
   
-
   <% if current_user != @helper.user %>
     <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @helper.user_id), 
     method: 'post', class: "btn btn-primary float-left buttons-right" %>
   <% end %>
 
-    <div class="float-right buttons-right">
+  <div class="float-right buttons-right">
     <% if current_user && current_user == @helper.user %>
       <%= link_to 'Edit Profile', edit_helper_path(@helper), class: 'btn btn-primary' %>
       <%= link_to 'Delete Profile', helper_path(@helper), method: :delete, data: 

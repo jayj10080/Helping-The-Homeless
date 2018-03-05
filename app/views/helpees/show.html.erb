@@ -7,7 +7,7 @@
 
   <h1><%= @helpee.name %></h1>
   <% if current_user && current_user == @helpee.user %>
-    <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary right button-top' %>
+    <%= link_to 'Inbox', conversations_path, class: 'btn btn-primary right button-top reposition-button' %>
   <% end %>
   <br />
     

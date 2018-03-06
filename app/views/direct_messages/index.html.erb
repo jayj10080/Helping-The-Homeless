@@ -1,26 +1,66 @@
 <% if @over_ten %>
   <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
+
 <div class="booyah-box col-10 offset-1">
- <% @messages.each do |message| %>
-  <% if message.body %>
-    <% user = User.find(message.user_id) %>
-    <div class="item">
-      <div class="content">
-        <div class="header"><strong><%= user.email %></strong>     <%= message.message_time %></div>
-          <div class="list">
-            <div class="item">
-            <i class="right triangle icon"></i>
-
-            <%= message.body %>
-
-            </div>
-          </div>
-        </div>
+  <% @messages.each do |message| %>
+  
+    <div class="row">
+      <div class="float-left">
+        <% id = message.user_id %>
+        <% user = User.find(id) %>
+        <% if user.helpee.present? %>
+          <% if user.helpee.avatar.present? %>
+            <%= image_tag user.helpee.avatar, class: "chat-pic" %>
+          <% else %>
+            <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
+          <% end %>
+        
+        <% elsif user.helper.present? %>
+          <% if user.helper.avatar.present? %>
+            <%= image_tag user.helper.avatar, class: "chat-pic" %>
+          <% else %>
+            <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
+          <% end %>
+        <% else %>
+          <%= image_tag "fillerProfile.jpg", class: "chat-pic" %>
+        <% end %>
       </div>
-    <% end %>
+      <div class="text-left">
+        <% if current_user.id != message.user_id %>
+          <strong class="inline-space" >
+            <% if user.helpee.present? %>
+              <%= link_to user.helpee.name, helpee_path(user.helpee.id) %>
+            <% end %>
+            <% if user.helper.present? %>
+              <%= link_to user.helper.name, helper_path(user.helper.id) %>
+            <% end %>
+          </strong>
+          <strong class="inline-space filler-left">
+          <% if !(user.helpee.present?) && !(user.helper.present?) %>
+            Profile-Deleted
+          <% end %>
+          </strong>
+
+        <% else %>
+          <strong class="inline-space">
+          <% if user.helpee.present? %>
+            <%= user.helpee.name %>
+          <% end %>
+          <% if user.helper.present? %>
+            <%= user.helper.name %>
+          <% end %>
+          </strong>
+        <% end %>
+        <%= message.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+        <br />
+        <%= message.body %>
+        <div class="clearing"></div>
+      </div>
+    </div>
   <% end %>
 </div>
+
 
 <div class="col-10 offset-1 text-insert">
   <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
@@ -44,9 +84,13 @@
       url: '/conversations/' + <%= @conversation.id %>,
       type: 'PUT',
       success: function(response) {
-    }
+        location.reload();
+      }
+    }); 
+    // window.location.reload(true);
+    
+    // window.location.href=window.location.href;
   });
-});
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>

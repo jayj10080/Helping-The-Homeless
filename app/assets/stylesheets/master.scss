@@ -436,6 +436,14 @@ div.modal-header1 {
     margin-top: 20px;
   }
 }
+
+.fa.fa-envelope {
+  display: none;
+}
+
+.fa.fa-envelope.visible {
+  display: block;
+}
     
 
 

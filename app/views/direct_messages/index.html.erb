@@ -63,9 +63,9 @@
 
 
 <div class="col-10 offset-1 text-insert">
-  <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+  <%= form_for [@conversation, @message], html: {class: "ui reply form"}, data-remote="true" do |f| %>
     <div class="field">
-      <%= f.text_area :body, class: "form-control" %>
+      <%= f.text_area :body, class: "form-control", id: "myform" %>
     </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
     <div>
@@ -84,7 +84,11 @@
       url: '/conversations/' + <%= @conversation.id %>,
       type: 'PUT',
       success: function(response) {
-        location.reload();
+        // event.preventDefault();
+        // location.reload();
+        console.log('success');
+        document.querySelector('.fa-envelope').classList.remove('visible');
+
       }
     }); 
     // window.location.reload(true);
@@ -95,6 +99,19 @@
 
 <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
 <script>
+
+  
+  // $('#myform').children('input').val('')
+  // $('#myform').find('input').val('')
+  $('#myform').val('')
+  // $("#myform")[0].val('');
+  // $("#myform").reset();
+  $("#myform").focus();
+  // document.onload = function() {  
+  // document.getElementById("input-focus").focus();
+  // }
+
+
   var lastMessagePageShown = <%= DirectMessage.order(:id).last.to_json.html_safe %>;
   // Initialize Firebase
   var config = {

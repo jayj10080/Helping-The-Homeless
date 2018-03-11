@@ -114,9 +114,9 @@
 
 <hr class="col-10 offset-1" />
 
-<div class="col-10 offset-1 text-insert">
+<div class="col-10 offset-1 text-insert" >
   <%= simple_form_for @message do |f| %>
-    <%= f.input :body %>
+    <%= f.input :body, input_html: {id: "workdamnit"} %>
     <%= f.submit "Chat!", class: "btn btn-primary" %>
   <% end %>
 </div>
@@ -134,6 +134,22 @@
 
 <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
 <script>
+
+  
+  // $('#myform').children('input').val('')
+  // $('#myform').find('input').val('')
+  // $("#myform")[0].val('');
+  // $("#myform").reset();
+  // $('#myForm').trigger("reset")
+  $('#workdamnit').val('');
+  console.log($('#workdamnit'));
+  console.log('hi');
+  $('#workdamnit').focus();
+
+  // document.onload = function() {  
+  // document.getElementById("input-focus").focus();
+  // }
+
   var lastMessagePageShown = <%= Message.order(:id).last.to_json.html_safe %>;
   // Initialize Firebase
   var config = {
@@ -163,6 +179,7 @@
     }
   });
 </script>
+
 
 
 

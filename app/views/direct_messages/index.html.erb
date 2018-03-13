@@ -63,17 +63,19 @@
 
 
 <div class="col-10 offset-1 text-insert">
-  <%= form_for [@conversation, @message], html: {class: "ui reply form"}, data-remote="true" do |f| %>
+  <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
     <div class="field">
       <%= f.text_area :body, class: "form-control", id: "myform" %>
     </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
     <div>
       <%= f.submit "Add Reply", class: "btn btn-primary btn-margin" %>
-      <button id="target" class="btn btn-primary float-right read-button">Mark as Read</button>
     </div>
   <% end %>
+  <button id="target" class="btn btn-primary float-right read-button">Mark as Read</button>
 </div>
+<br />
+<br />
 
 
 

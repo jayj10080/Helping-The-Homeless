@@ -90,30 +90,26 @@
         // location.reload();
         console.log('success');
         document.querySelector('.fa-envelope').classList.remove('visible');
-
       }
     }); 
     // window.location.reload(true);
-    
     // window.location.href=window.location.href;
   });
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
-<script>
 
-  
+<script>
   // $('#myform').children('input').val('')
   // $('#myform').find('input').val('')
-  $('#myform').val('')
   // $("#myform")[0].val('');
   // $("#myform").reset();
-  $("#myform").focus();
   // document.onload = function() {  
   // document.getElementById("input-focus").focus();
   // }
-
-
+  $('#myform').val('')
+  $("#myform").focus();
+  
   var lastMessagePageShown = <%= DirectMessage.order(:id).last.to_json.html_safe %>;
   // Initialize Firebase
   var config = {
@@ -131,30 +127,22 @@
   var messageRef = database.ref('directmessage');
   console.log(messageRef);
   messageRef.on('value', function(snapshot) {
-    // updateStarCount(postElement, snapshot.val());
-    // console.log(snapshot.val());
     var values = snapshot.val();
     var ids = Object.keys(values);
     var lastId = ids[ids.length - 1];
     var lastMessage = values[lastId];
     console.log(lastMessage);
-    
-
     var hasUnreadMessages = false;
-    for(var key in values)
-    {
-        if(values[key].read === false)
-        {
-            hasUnreadMessages = true;
-        }
+    for(var key in values) {
+      if(values[key].read === false) {
+        hasUnreadMessages = true;
+      }
     }
 
-    if(hasUnreadMessages)
-    {
+    if(hasUnreadMessages) {
       document.querySelector('.fa-envelope').classList.add('visible');  
     }
-    else
-    {
+    else {
       document.querySelector('.fa-envelope').classList.remove('visible');
     }
     

@@ -73,7 +73,6 @@
   var marker = [];
 
     function initMap() {
-
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 11,
         center: {lat: 40.0194747, lng: -105.28127790000002}
@@ -154,7 +153,6 @@
                '<br />' + 'Friday 9AM–11AM, 12PM-2PM' + '<br />' +
               'Saturday CLOSED' + '<br />' + 'Sunday CLOSED' + '</p>'
         })
-
       ];      
 
       var infowindow = new google.maps.InfoWindow();
@@ -169,7 +167,9 @@
       });
     }
 
-    $(document).on("turbolinks:load", function(){
+    // Deleted turbolinks because of conflict with chatrooms.
+    // $(document).on("turbolinks:load", function(){
+    $(document).on('ready page:load', function () {
       $(".markerclass").click(function(e) {
         e.preventDefault();
         var markerid = $(this).attr("id").replace("marker", "")

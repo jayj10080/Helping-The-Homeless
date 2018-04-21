@@ -5,12 +5,12 @@ class DirectMessagesController < ApplicationController
 
   def index
     @messages = @conversation.direct_messages.order(id: :asc)
-    
+
     if @messages.length > 10
       @over_ten = true
       @messages = @messages[-10..-1]
     end
-    
+
     if params[:m]
       @over_ten = false
       @messages = @conversation.direct_messages
@@ -21,7 +21,6 @@ class DirectMessagesController < ApplicationController
         @messages.last.read = true
       end
     end
-
 
     @message = @conversation.direct_messages.new
   end
@@ -38,18 +37,15 @@ class DirectMessagesController < ApplicationController
   end
 
   def create
-
     # Subtract current_user.id from array
     conversation = Conversation.find(params['conversation_id'])
     array_of_ids = [conversation.sender_id, conversation.recipient_id]
-    recipient_id_variable = (array_of_ids - [current_user.id])[0]  
-    
+    recipient_id_variable = (array_of_ids - [current_user.id])[0]
     @message = @conversation.direct_messages.new(message_params.merge({recipient_id: recipient_id_variable, sender_id: current_user.id}))
 
     if @message.save
       redirect_to conversation_direct_messages_path(@conversation)
     end
-
   end
 
   private
@@ -60,4 +56,4 @@ class DirectMessagesController < ApplicationController
 
 end
 
-# change user_id to sender_id so people can better understand code
+

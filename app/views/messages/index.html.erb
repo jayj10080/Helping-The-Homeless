@@ -7,8 +7,7 @@
   
     <div class="row">
       <div class="float-left">
-        <% id = message.user_id %>
-        <% user = User.find(id) %>
+        <% user = message.user %>
         <% if user.helpee.present? %>
           <% if user.helpee.avatar.present? %>
             <%= image_tag user.helpee.avatar, class: "chat-pic" %>
@@ -134,21 +133,16 @@
 
 <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
 <script>
-
-  
   // $('#myform').children('input').val('')
   // $('#myform').find('input').val('')
   // $("#myform")[0].val('');
   // $("#myform").reset();
   // $('#myForm').trigger("reset")
-  $('#workdamnit').val('');
-  console.log($('#workdamnit'));
-  console.log('hi');
-  $('#workdamnit').focus();
-
   // document.onload = function() {  
   // document.getElementById("input-focus").focus();
   // }
+  $('#workdamnit').val('');
+  $('#workdamnit').focus();
 
   var lastMessagePageShown = <%= Message.order(:id).last.to_json.html_safe %>;
   // Initialize Firebase

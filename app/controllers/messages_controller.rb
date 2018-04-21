@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def index
     if current_user.helpee.present? || current_user.helper.present?
       @message = Message.new
-      @messages = Message.order(:id).all
+      @messages = Message.includes(:user).order(:id).all
     else 
       return render plain: 'You need to create a profile first.', status: :forbidden
     end
@@ -21,7 +21,6 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    
   end
 
   private

@@ -1,6 +1,6 @@
 class HelpersController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @helper = Helper.all
   end
@@ -17,7 +17,7 @@ class HelpersController < ApplicationController
   end
 
   def show
-     @helper = Helper.find(params[:id])
+    @helper = Helper.find(params[:id])
   end
 
   def edit

@@ -30,10 +30,13 @@ class HelpeesController < ApplicationController
 
   def update
     @helpee = Helpee.find(params[:id])
+
     if @helpee.user != current_user
       return render plain: 'Not Allowed', status: :forbidden
     end
+
     @helpee.update_attributes(helpee_params)
+    
     if @helpee.valid?
       redirect_to helpee_path(@helpee)
     else
@@ -43,12 +46,11 @@ class HelpeesController < ApplicationController
 
   def destroy
     @helpee = Helpee.find(params[:id])
+
     if @helpee.user != current_user
       return render plain: 'Not Allowed', status: :forbidden
     end
 
-    # @user = User.find(@helpee.user_id)
-    # @user.conversations_as_sender.destroy
     @helpee.destroy
     redirect_to root_path
   end
@@ -58,8 +60,6 @@ class HelpeesController < ApplicationController
     @helpee = Helpee.new(helpee_params)
     @helpee.user = @user
     @helpee.save
-
-    
 
     if @helpee.valid?
       redirect_to places_path

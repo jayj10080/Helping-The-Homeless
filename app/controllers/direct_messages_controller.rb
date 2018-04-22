@@ -13,7 +13,7 @@ class DirectMessagesController < ApplicationController
 
     if params[:m]
       @over_ten = false
-      @messages = @conversation.direct_messages
+      @messages = @conversation.direct_messages.order(id: :asc)
     end
 
     if @messages.last

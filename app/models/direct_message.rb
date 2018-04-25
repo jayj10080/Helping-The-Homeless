@@ -4,7 +4,7 @@ class DirectMessage < ActiveRecord::Base
   validates_presence_of :body, :conversation_id, :user_id
   after_create :send_message_email
   after_create :send_to_firebase2
- 
+  
   def message_time
     created_at.strftime("%m/%e/%y %l:%M %p ")
   end

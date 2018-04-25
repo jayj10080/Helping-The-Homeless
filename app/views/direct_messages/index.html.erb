@@ -65,7 +65,7 @@
 <div class="col-10 offset-1 text-insert">
   <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
     <div class="field">
-      <%= f.text_area :body, class: "form-control", id: "myform" %>
+      <%= f.text_area :body, required: true, class: "form-control", id: "myform" %>
     </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
     <div>
@@ -77,9 +77,6 @@
 <br />
 <br />
 
-
-
-
 <script type="text/javascript">
   $( "#target" ).click(function() {
     $.ajax({
@@ -87,9 +84,8 @@
       type: 'PUT',
       success: function(response) {
         // event.preventDefault();
-        // location.reload();
-        console.log('success');
         document.querySelector('.fa-envelope').classList.remove('visible');
+        location.reload();
       }
     }); 
     // window.location.reload(true);
@@ -139,12 +135,12 @@
       }
     }
 
-    if(hasUnreadMessages) {
-      document.querySelector('.fa-envelope').classList.add('visible');  
-    }
-    else {
-      document.querySelector('.fa-envelope').classList.remove('visible');
-    }
+    // if(hasUnreadMessages) {
+    //   document.querySelector('.fa-envelope').classList.add('visible');  
+    // }
+    // else {
+    //   document.querySelector('.fa-envelope').classList.remove('visible');
+    // }
     
     if(lastMessagePageShown.id < lastMessage.id) {
       location.reload();

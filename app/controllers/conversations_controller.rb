@@ -13,7 +13,9 @@ class ConversationsController < ApplicationController
 
   def update
     @conversation = Conversation.find(params[:id])
-    @conversation.direct_messages.update_all(read: true)
+    @message = @conversation.direct_messages.where(recipient_id: current_user.id)
+    @message.update_all(read: true)
+    # @conversation.direct_messages.update_all(read: true)
   end
 
   def create
